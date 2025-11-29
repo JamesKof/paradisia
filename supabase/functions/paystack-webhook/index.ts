@@ -6,17 +6,73 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-paystack-signature",
 };
 
+// Verify Paystack webhook signature using HMAC SHA-512
+async function verifyPaystackSignature(body: string, signature: string | null): Promise<boolean> {
+  if (!signature) {
+    console.error("No signature provided in webhook request");
+    return false;
+  }
+
+  const secretKey = Deno.env.get("PAYSTACK_SECRET_KEY");
+  if (!secretKey) {
+    console.error("PAYSTACK_SECRET_KEY not configured");
+    return false;
+  }
+
+  try {
+    const encoder = new TextEncoder();
+    const key = await crypto.subtle.importKey(
+      "raw",
+      encoder.encode(secretKey),
+      { name: "HMAC", hash: "SHA-512" },
+      false,
+      ["sign"]
+    );
+
+    const signatureBytes = await crypto.subtle.sign(
+      "HMAC",
+      key,
+      encoder.encode(body)
+    );
+
+    const expectedSignature = Array.from(new Uint8Array(signatureBytes))
+      .map((b) => b.toString(16).padStart(2, "0"))
+      .join("");
+
+    return expectedSignature === signature;
+  } catch (error) {
+    console.error("Error verifying signature:", error);
+    return false;
+  }
+}
+
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
+    // Get the raw body and signature for verification
+    const body = await req.text();
+    const signature = req.headers.get("x-paystack-signature");
+
+    // Verify the webhook signature
+    const isValid = await verifyPaystackSignature(body, signature);
+    if (!isValid) {
+      console.error("Invalid Paystack webhook signature - rejecting request");
+      return new Response(JSON.stringify({ error: "Invalid signature" }), {
+        status: 401,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    console.log("Paystack webhook signature verified successfully");
+
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-    const payload = await req.json();
+    const payload = JSON.parse(body);
     console.log("Paystack webhook event:", payload.event);
 
     if (payload.event === "charge.success") {
