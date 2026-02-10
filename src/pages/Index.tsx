@@ -7,18 +7,33 @@ import { AmenitiesSection } from "@/components/AmenitiesSection";
 import { ExploreSection } from "@/components/ExploreSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+
+const RevealSection = ({ children }: { children: React.ReactNode }) => {
+  const { ref, isVisible } = useScrollReveal(0.1);
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-700 ease-out ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      }`}
+    >
+      {children}
+    </div>
+  );
+};
 
 const Index = () => {
   return (
     <main className="min-h-screen overflow-x-hidden">
       <Navbar />
       <HeroSection />
-      <PhotoShowcase />
-      <AboutSection />
-      <AccommodationSection />
-      <AmenitiesSection />
-      <ExploreSection />
-      <ContactSection />
+      <RevealSection><PhotoShowcase /></RevealSection>
+      <RevealSection><AboutSection /></RevealSection>
+      <RevealSection><AccommodationSection /></RevealSection>
+      <RevealSection><AmenitiesSection /></RevealSection>
+      <RevealSection><ExploreSection /></RevealSection>
+      <RevealSection><ContactSection /></RevealSection>
       <Footer />
     </main>
   );
