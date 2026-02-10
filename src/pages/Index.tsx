@@ -1,4 +1,5 @@
 import { Navbar } from "@/components/Navbar";
+import { WhatsAppChat } from "@/components/WhatsAppChat";
 import { HeroSection } from "@/components/HeroSection";
 import { PhotoShowcase } from "@/components/PhotoShowcase";
 import { AboutSection } from "@/components/AboutSection";
@@ -37,6 +38,7 @@ const Index = () => {
       <RevealSection><VideoShortsSlider /></RevealSection>
       <RevealSection><ContactSection /></RevealSection>
       <Footer />
+      <WhatsAppChat />
     </main>
   );
 };
