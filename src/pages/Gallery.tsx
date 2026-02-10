@@ -22,6 +22,17 @@ import roomBed from "@/assets/paradasia-room-bed.jpg";
 import roomEnsuite from "@/assets/paradasia-room-ensuite.jpg";
 import presidentialLounge from "@/assets/paradasia-presidential-lounge.jpg";
 import presidentialArt from "@/assets/paradasia-presidential-art.jpg";
+import beachFashion from "@/assets/paradasia-beach-fashion.jpg";
+import boatRide from "@/assets/paradasia-boat-ride.jpg";
+import loungeTV from "@/assets/paradasia-lounge-tv.jpg";
+import night1 from "@/assets/paradasia-night-1.jpg";
+import night2 from "@/assets/paradasia-night-2.jpg";
+import sunset1 from "@/assets/paradasia-sunset-1.jpg";
+import sunset2 from "@/assets/paradasia-sunset-2.jpg";
+import property1 from "@/assets/paradasia-property-1.jpg";
+import pool from "@/assets/paradasia-pool.jpg";
+import dawnCruise from "@/assets/paradasia-dawn-cruise.jpg";
+
 const galleryImages = [
   { id: 3, src: paradasiaWineLagoon, title: "Sip, breathe, and let the lagoon tell its story", category: "Lifestyle" },
   { id: 4, src: paradasiaBonfire, title: "Let the bonfire light your soul under swaying palms", category: "Night Views" },
@@ -40,6 +51,16 @@ const galleryImages = [
   { id: 29, src: roomEnsuite, title: "Thoughtful details make every stay unforgettable", category: "Rooms" },
   { id: 30, src: presidentialLounge, title: "Golden evenings in the Presidential lounge", category: "Rooms" },
   { id: 31, src: presidentialArt, title: "Pan-African art adorns your sanctuary", category: "Rooms" },
+  { id: 32, src: beachFashion, title: "Golden hour glamour on Paradasia's shores", category: "Lifestyle" },
+  { id: 33, src: boatRide, title: "Cruise the estuary with our expert guides", category: "Adventures" },
+  { id: 34, src: loungeTV, title: "Modern comfort meets island warmth", category: "Rooms" },
+  { id: 35, src: night1, title: "Firelit elegance under the African night sky", category: "Night Views" },
+  { id: 36, src: night2, title: "Evening whispers in a hammock by the palms", category: "Night Views" },
+  { id: 37, src: sunset1, title: "Golden sun melting into Big Ada's waters", category: "Views" },
+  { id: 38, src: sunset2, title: "Silhouette of serenity at sunset", category: "Views" },
+  { id: 39, src: property1, title: "Lush island pathways to your sanctuary", category: "Views" },
+  { id: 40, src: pool, title: "Dream deeply in cloud-white comfort", category: "Rooms" },
+  { id: 41, src: dawnCruise, title: "Your private speedboat awaits on the shore", category: "Adventures" },
 ];
 
 const categories = ["All", "Rooms", "Adventures", "Lifestyle", "Night Views", "Views"];
