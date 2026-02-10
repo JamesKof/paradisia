@@ -36,7 +36,16 @@ import roomBed from "@/assets/paradasia-room-bed.jpg";
 import roomEnsuite from "@/assets/paradasia-room-ensuite.jpg";
 import presidentialLounge from "@/assets/paradasia-presidential-lounge.jpg";
 import presidentialArt from "@/assets/paradasia-presidential-art.jpg";
-
+import waterBliss from "@/assets/paradasia-water-bliss.jpg";
+import loungeTV from "@/assets/paradasia-lounge-tv.jpg";
+import sculptures from "@/assets/paradasia-sculptures.jpg";
+import totem from "@/assets/paradasia-totem.jpg";
+import bambooPath from "@/assets/paradasia-bamboo-path.jpg";
+import clayFaces from "@/assets/paradasia-clay-faces.jpg";
+import artBusts from "@/assets/paradasia-art-busts.jpg";
+import bambooJoy from "@/assets/paradasia-bamboo-joy.jpg";
+import muralTouch from "@/assets/paradasia-mural-touch.jpg";
+import beachFashion from "@/assets/paradasia-beach-fashion.jpg";
 const galleryImages = [
   {
     id: 1,
@@ -224,9 +233,69 @@ const galleryImages = [
     title: "Pan-African art adorns your sanctuary",
     category: "Rooms",
   },
+  {
+    id: 32,
+    src: waterBliss,
+    title: "Let the golden waters cradle your spirit",
+    category: "Lifestyle",
+  },
+  {
+    id: 33,
+    src: loungeTV,
+    title: "Unwind in the open-air lounge — island time moves slow",
+    category: "Lifestyle",
+  },
+  {
+    id: 34,
+    src: sculptures,
+    title: "Ancient guardians welcome you to Big Ada's cultural heart",
+    category: "Culture",
+  },
+  {
+    id: 35,
+    src: totem,
+    title: "Stories carved in stone — every symbol tells a tale",
+    category: "Culture",
+  },
+  {
+    id: 36,
+    src: bambooPath,
+    title: "Walk through nature's cathedral — the bamboo corridor awaits",
+    category: "Nature",
+  },
+  {
+    id: 37,
+    src: clayFaces,
+    title: "A thousand ancestors watch over this sacred ground",
+    category: "Culture",
+  },
+  {
+    id: 38,
+    src: artBusts,
+    title: "Art that remembers — sculptures under the African sun",
+    category: "Culture",
+  },
+  {
+    id: 39,
+    src: bambooJoy,
+    title: "Freedom looks like this — dancing through the bamboo grove",
+    category: "Nature",
+  },
+  {
+    id: 40,
+    src: muralTouch,
+    title: "Touch history — monumental murals that speak of Africa's journey",
+    category: "Culture",
+  },
+  {
+    id: 41,
+    src: beachFashion,
+    title: "Golden hour, golden you — island glamour at Paradasia",
+    category: "Lifestyle",
+  },
 ];
 
-const categories = ["All", "Rooms", "Adventures", "Lifestyle", "Night Views", "Aerial", "Sunset", "Views", "Property", "Amenities"];
+const categories = ["All", "Rooms", "Lifestyle", "Adventures", "Culture", "Nature", "Night Views", "Aerial", "Sunset", "Views", "Property", "Amenities"];
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
@@ -269,17 +338,21 @@ const Gallery = () => {
       <Navbar />
 
       {/* Hero Header */}
-      <section className="pt-32 pb-16 bg-brand-blue-dark">
-        <div className="max-w-7xl mx-auto px-4 text-center">
+      <section className="pt-32 pb-20 bg-brand-blue-dark relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-20 left-10 w-40 h-40 border border-brand-orange/10 rounded-full animate-float" />
+        <div className="absolute bottom-10 right-20 w-24 h-24 border border-brand-sky/10 rounded-full animate-float animation-delay-200" />
+        <div className="max-w-7xl mx-auto px-4 text-center relative z-10">
           <span className="inline-block text-brand-orange text-sm tracking-widest uppercase mb-4">
-            Visual Journey
+            A Visual Love Letter to Big Ada
           </span>
           <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl text-brand-sky-light mb-6">
-            Photo <span className="text-brand-orange">Gallery</span>
+            Moments That <span className="text-brand-orange">Live Forever</span>
           </h1>
-          <p className="text-brand-sky/80 text-lg max-w-2xl mx-auto">
-            Explore the breathtaking beauty of Paradasia Hideway through our collection
-            of stunning photographs capturing every magical moment.
+          <p className="text-brand-sky/80 text-lg max-w-3xl mx-auto leading-relaxed">
+            Every photograph tells a story of sun-kissed waters, Pan-African art, 
+            warm island hospitality, and the kind of beauty that makes your soul exhale. 
+            Welcome to Paradasia — through the lens.
           </p>
         </div>
       </section>

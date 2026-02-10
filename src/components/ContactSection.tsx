@@ -15,13 +15,13 @@ const contactInfo = [
   {
     icon: Phone,
     label: "Phone",
-    value: "+233 XX XXX XXXX",
+    value: "+233 24 481 9524",
     subtext: "Available 24/7",
   },
   {
     icon: Mail,
     label: "Email",
-    value: "hello@paradasiahideway.com",
+    value: "info@paradasiahideway.com",
     subtext: "We respond within 24 hours",
   },
 ];
