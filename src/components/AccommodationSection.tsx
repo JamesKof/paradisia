@@ -5,7 +5,7 @@ import { BookingModal } from "@/components/BookingModal";
 import { ROOM_PRICING } from "@/lib/roomTypes";
 import presidentialSuite from "@/assets/presidential-suite.jpg";
 import standardRoom from "@/assets/standard-room.jpg";
-import paradasiaView from "@/assets/paradasia-view.jpg";
+import roomBed from "@/assets/paradasia-room-bed.jpg";
 
 const rooms = [
   {
@@ -32,7 +32,7 @@ const rooms = [
     id: "full_property" as const,
     name: "Full Property Buyout",
     pricing: ROOM_PRICING.full_property,
-    image: paradasiaView,
+    image: roomBed,
     description: "Exclusive access to the entire 3-bedroom property — the ultimate private island experience for larger groups and events.",
     features: ["3 Bedrooms", "Entire Property", "Private Chef Option", "Event Space"],
     guests: "2-10 Guests",
