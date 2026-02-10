@@ -6,7 +6,7 @@ import paradasiaJetski1 from "@/assets/paradasia-jetski-1.jpg";
 import paradasiaFloating1 from "@/assets/paradasia-floating-1.jpg";
 import paradasiaBonfire from "@/assets/paradasia-bonfire.jpg";
 import paradasiaSuiteLounge from "@/assets/paradasia-suite-lounge.jpg";
-import paradasiaView from "@/assets/paradasia-view.jpg";
+import paradasiaDawnCruise from "@/assets/paradasia-dawn-cruise.jpg";
 
 const TikTokIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -26,7 +26,7 @@ const shorts = [
     id: "short2",
     videoId: "7558025403663682828",
     title: "Panoramic Views of Big Ada",
-    thumbnail: paradasiaView,
+    thumbnail: paradasiaDawnCruise,
   },
   {
     id: "short3",

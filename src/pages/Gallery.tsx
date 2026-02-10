@@ -5,7 +5,7 @@ import { Footer } from "@/components/Footer";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 // Import Paradasia images
-import paradasiaView from "@/assets/paradasia-view.jpg";
+
 import paradasiaWineLagoon from "@/assets/paradasia-wine-lagoon.jpg";
 import paradasiaBonfire from "@/assets/paradasia-bonfire.jpg";
 import paradasiaJetski1 from "@/assets/paradasia-jetski-1.jpg";
@@ -41,7 +41,7 @@ const galleryImages = [
   { id: 8, src: paradasiaJetski3, title: "Feel the breeze, own the moment", category: "Adventures" },
   { id: 9, src: paradasiaFloating1, title: "Drift into serenity — the water holds you here", category: "Lifestyle" },
   { id: 10, src: paradasiaFloating2, title: "Surrender to nature's embrace at Paradasia", category: "Lifestyle" },
-  { id: 20, src: paradasiaView, title: "Panoramic Vista", category: "Views" },
+  
   { id: 23, src: presidentialSuite, title: "The Presidential Suite — where African royalty rests", category: "Rooms" },
   { id: 24, src: standardRoom, title: "Warm elegance in every corner of your island room", category: "Rooms" },
   { id: 25, src: suiteLounge, title: "Sink into comfort — your private island lounge awaits", category: "Rooms" },
