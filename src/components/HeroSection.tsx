@@ -1,21 +1,53 @@
+import { useState, useEffect, useCallback } from "react";
 import { ChevronDown } from "lucide-react";
-import heroBg from "@/assets/paradasia-view.jpg";
 import { Button } from "@/components/ui/button";
+import heroRoom from "@/assets/paradasia-suite-living.jpg";
+import heroAdventure from "@/assets/paradasia-jetski-1.jpg";
+import heroView from "@/assets/paradasia-view.jpg";
+
+const slides = [
+  { src: heroView, alt: "Paradasia river view at sunset" },
+  { src: heroRoom, alt: "Paradasia luxury suite living room" },
+  { src: heroAdventure, alt: "Jet ski adventure at Paradasia" },
+];
 
 export const HeroSection = () => {
+  const [current, setCurrent] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const goToSlide = useCallback((index: number) => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrent(index);
+    setTimeout(() => setIsTransitioning(false), 1000);
+  }, [isTransitioning]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      goToSlide((current + 1) % slides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [current, goToSlide]);
+
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background Layer */}
-      <div className="absolute inset-0 w-full h-full scale-110">
-        <img
-          src={heroBg}
-          alt="Paradasia Hideway aerial view"
-          className="w-full h-full object-cover blur-[2px]"
-        />
-      </div>
+      {/* Background Slides */}
+      {slides.map((slide, index) => (
+        <div
+          key={index}
+          className="absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out"
+          style={{ opacity: current === index ? 1 : 0 }}
+        >
+          <img
+            src={slide.src}
+            alt={slide.alt}
+            className="w-full h-full object-cover scale-110"
+          />
+        </div>
+      ))}
 
       {/* Cinematic gradient overlays */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/70" />
@@ -76,6 +108,22 @@ export const HeroSection = () => {
             </Button>
           </a>
         </div>
+      </div>
+
+      {/* Slide Indicators */}
+      <div className="absolute bottom-20 sm:bottom-24 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={`h-1.5 rounded-full transition-all duration-500 ${
+              current === index
+                ? "w-8 bg-brand-orange"
+                : "w-1.5 bg-white/40 hover:bg-white/60"
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
       </div>
 
       {/* Scroll Indicator */}
