@@ -1,7 +1,7 @@
 import { MapPin, Camera, Heart, Compass } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import paradasiaAerial from "@/assets/paradasia-aerial-1.jpg";
-import paradasiaView from "@/assets/paradasia-view.jpg";
+import paradasiaBoatRide from "@/assets/paradasia-boat-ride.jpg";
+import paradasiaDawnCruise from "@/assets/paradasia-dawn-cruise.jpg";
 
 const experiences = [
   {
@@ -52,15 +52,15 @@ export const ExploreSection = () => {
             <div className="grid grid-cols-2 gap-4">
               <div className="relative rounded-2xl overflow-hidden shadow-elevation-4 h-[350px]">
                 <img
-                  src={paradasiaAerial}
-                  alt="Paradasia Hideway aerial view of Big Ada"
+                  src={paradasiaBoatRide}
+                  alt="Speed through palm-lined waterways — adventure starts here at Paradasia"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
               </div>
               <div className="relative rounded-2xl overflow-hidden shadow-elevation-4 h-[350px] mt-8">
                 <img
-                  src={paradasiaView}
-                  alt="Paradasia Hideway property view"
+                  src={paradasiaDawnCruise}
+                  alt="A golden dawn on the estuary — nature's invitation to explore Big Ada"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
               </div>

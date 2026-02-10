@@ -17,83 +17,153 @@ import paradasiaSunset2 from "@/assets/paradasia-sunset-2.jpg";
 import paradasiaView from "@/assets/paradasia-view.jpg";
 import paradasiaProperty1 from "@/assets/paradasia-property-1.jpg";
 import paradasiaProperty2 from "@/assets/paradasia-property-2.jpg";
+import paradasiaAerialNight from "@/assets/paradasia-aerial-night.jpg";
+import paradasiaBoatRide from "@/assets/paradasia-boat-ride.jpg";
+import paradasiaWineLagoon from "@/assets/paradasia-wine-lagoon.jpg";
+import paradasiaBonfire from "@/assets/paradasia-bonfire.jpg";
+import paradasiaDawnCruise from "@/assets/paradasia-dawn-cruise.jpg";
+import paradasiaJetski1 from "@/assets/paradasia-jetski-1.jpg";
+import paradasiaJetski2 from "@/assets/paradasia-jetski-2.jpg";
+import paradasiaJetski3 from "@/assets/paradasia-jetski-3.jpg";
+import paradasiaFloating1 from "@/assets/paradasia-floating-1.jpg";
+import paradasiaFloating2 from "@/assets/paradasia-floating-2.jpg";
 
 const galleryImages = [
   {
     id: 1,
-    src: paradasiaCover,
-    title: "Paradasia Hideway at Night",
+    src: paradasiaAerialNight,
+    title: "Where the night whispers luxury — Paradasia from above",
     category: "Night Views",
   },
   {
     id: 2,
+    src: paradasiaBoatRide,
+    title: "Race through paradise — the estuary is your playground",
+    category: "Adventures",
+  },
+  {
+    id: 3,
+    src: paradasiaWineLagoon,
+    title: "Sip, breathe, and let the lagoon tell its story",
+    category: "Lifestyle",
+  },
+  {
+    id: 4,
+    src: paradasiaBonfire,
+    title: "Let the bonfire light your soul under swaying palms",
+    category: "Night Views",
+  },
+  {
+    id: 5,
+    src: paradasiaDawnCruise,
+    title: "First light on golden waters — mornings made for explorers",
+    category: "Adventures",
+  },
+  {
+    id: 6,
+    src: paradasiaJetski1,
+    title: "Unleash your wild side on Big Ada's waters",
+    category: "Adventures",
+  },
+  {
+    id: 7,
+    src: paradasiaJetski2,
+    title: "Sun-kissed and fearless — this is island living",
+    category: "Adventures",
+  },
+  {
+    id: 8,
+    src: paradasiaJetski3,
+    title: "Feel the breeze, own the moment",
+    category: "Adventures",
+  },
+  {
+    id: 9,
+    src: paradasiaFloating1,
+    title: "Drift into serenity — the water holds you here",
+    category: "Lifestyle",
+  },
+  {
+    id: 10,
+    src: paradasiaFloating2,
+    title: "Surrender to nature's embrace at Paradasia",
+    category: "Lifestyle",
+  },
+  {
+    id: 11,
+    src: paradasiaCover,
+    title: "Paradasia Hideway — your island sanctuary",
+    category: "Night Views",
+  },
+  {
+    id: 12,
     src: paradasiaAerial1,
     title: "Aerial View of Big Ada",
     category: "Aerial",
   },
   {
-    id: 3,
+    id: 13,
     src: paradasiaAerial2,
     title: "Resort from Above",
     category: "Aerial",
   },
   {
-    id: 4,
+    id: 14,
     src: paradasiaAerial3,
     title: "Island Paradise",
     category: "Aerial",
   },
   {
-    id: 5,
+    id: 15,
     src: paradasiaPool,
     title: "Luxury Pool Area",
     category: "Amenities",
   },
   {
-    id: 6,
+    id: 16,
     src: paradasiaNight1,
     title: "Evening Ambiance",
     category: "Night Views",
   },
   {
-    id: 7,
+    id: 17,
     src: paradasiaNight2,
     title: "Nighttime Serenity",
     category: "Night Views",
   },
   {
-    id: 8,
+    id: 18,
     src: paradasiaSunset1,
     title: "Golden Hour at Paradasia",
     category: "Sunset",
   },
   {
-    id: 9,
+    id: 19,
     src: paradasiaSunset2,
     title: "Sunset over Big Ada",
     category: "Sunset",
   },
   {
-    id: 10,
+    id: 20,
     src: paradasiaView,
     title: "Panoramic Vista",
     category: "Views",
   },
   {
-    id: 11,
+    id: 21,
     src: paradasiaProperty1,
     title: "Property Grounds",
     category: "Property",
   },
   {
-    id: 12,
+    id: 22,
     src: paradasiaProperty2,
     title: "Resort Landscape",
     category: "Property",
   },
 ];
 
-const categories = ["All", "Aerial", "Night Views", "Sunset", "Views", "Property", "Amenities"];
+const categories = ["All", "Adventures", "Lifestyle", "Night Views", "Aerial", "Sunset", "Views", "Property", "Amenities"];
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
