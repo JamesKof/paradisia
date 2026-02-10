@@ -7,6 +7,7 @@ import { AmenitiesSection } from "@/components/AmenitiesSection";
 import { ExploreSection } from "@/components/ExploreSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
+import { VideoShortsSlider } from "@/components/VideoShortsSlider";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const RevealSection = ({ children }: { children: React.ReactNode }) => {
@@ -33,6 +34,7 @@ const Index = () => {
       <RevealSection><AccommodationSection /></RevealSection>
       <RevealSection><AmenitiesSection /></RevealSection>
       <RevealSection><ExploreSection /></RevealSection>
+      <RevealSection><VideoShortsSlider /></RevealSection>
       <RevealSection><ContactSection /></RevealSection>
       <Footer />
     </main>
