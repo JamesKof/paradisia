@@ -28,33 +28,33 @@ export const AboutSection = () => {
   return (
     <section id="about" className="section-padding bg-background">
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Image Side */}
           <div className="relative">
             <div className="relative rounded-2xl overflow-hidden shadow-elevation-5">
               <img
                 src={paradasiaAerialNight}
                 alt="Paradasia Hideway glowing under the stars — your island sanctuary awaits"
-                className="w-full h-[500px] object-cover"
+                className="w-full h-[300px] sm:h-[400px] lg:h-[500px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-blue-dark/60 to-transparent" />
             </div>
             
             {/* Floating Card */}
-            <div className="absolute -bottom-8 -right-8 bg-card rounded-2xl p-6 shadow-elevation-5 max-w-[280px] border border-brand-orange/20">
-              <div className="flex items-center gap-4 mb-3">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-brand-orange-dark to-brand-orange flex items-center justify-center">
-                  <span className="font-display text-brand-blue-dark text-2xl font-bold">5★</span>
+            <div className="absolute -bottom-6 right-2 sm:-bottom-8 sm:-right-8 bg-card rounded-2xl p-4 sm:p-6 shadow-elevation-5 max-w-[220px] sm:max-w-[280px] border border-brand-orange/20">
+              <div className="flex items-center gap-3 sm:gap-4 mb-3">
+                <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-brand-orange-dark to-brand-orange flex items-center justify-center">
+                  <span className="font-display text-brand-blue-dark text-lg sm:text-2xl font-bold">5★</span>
                 </div>
                 <div>
-                  <p className="font-display text-foreground text-lg">Luxury Experience</p>
-                  <p className="text-muted-foreground text-sm">Near Aqua Safari</p>
+                  <p className="font-display text-foreground text-base sm:text-lg">Luxury Experience</p>
+                  <p className="text-muted-foreground text-xs sm:text-sm">Near Aqua Safari</p>
                 </div>
               </div>
             </div>
             
             {/* Decorative Border */}
-            <div className="absolute -top-4 -left-4 w-full h-full border-2 border-brand-blue/20 rounded-2xl -z-10" />
+            <div className="absolute -top-4 -left-4 w-full h-full border-2 border-brand-blue/20 rounded-2xl -z-10 hidden sm:block" />
           </div>
 
           {/* Content Side */}

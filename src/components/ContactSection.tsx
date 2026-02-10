@@ -174,7 +174,7 @@ export const ContactSection = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Contact Form */}
           <div className="bg-brand-blue-light rounded-2xl p-8 border border-brand-blue shadow-elevation-4">
             <h3 className="font-display text-brand-sky-light text-2xl mb-6">Send Us a Message</h3>
@@ -336,7 +336,7 @@ export const ContactSection = () => {
             </div>
 
             {/* Map Placeholder */}
-            <div className="relative h-[250px] rounded-xl overflow-hidden border border-brand-blue">
+            <div className="relative h-[200px] sm:h-[250px] rounded-xl overflow-hidden border border-brand-blue">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.5!2d0.6378!3d5.7867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1020f5c9e2a7b3d1%3A0x4f8a9c2d1e3b5a7f!2sParadasia+Hideway!5e0!3m2!1sen!2sgh!4v1700000000000"
                 className="w-full h-full grayscale contrast-125 opacity-80"

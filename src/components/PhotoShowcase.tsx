@@ -37,7 +37,7 @@ export const PhotoShowcase = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px] md:auto-rows-[220px]">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 auto-rows-[150px] sm:auto-rows-[200px] md:auto-rows-[220px]">
           {photos.map((photo, index) => (
             <div
               key={index}

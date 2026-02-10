@@ -1,5 +1,6 @@
 import { ChevronDown } from "lucide-react";
-import heroBg from "@/assets/paradasia-aerial-night.jpg";
+import heroBg from "@/assets/paradasia-cover.jpg";
+import paradasiaSunset1 from "@/assets/paradasia-sunset-1.jpg";
 import { Button } from "@/components/ui/button";
 
 export const HeroSection = () => {
@@ -8,68 +9,90 @@ export const HeroSection = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Photo Background */}
-      <div className="absolute inset-0 w-full h-full">
+      {/* Background Layer — blurred for cinematic depth */}
+      <div className="absolute inset-0 w-full h-full scale-110">
         <img
           src={heroBg}
-          alt="Paradasia Hideway aerial view at night"
-          className="w-full h-full object-cover"
+          alt="Paradasia Hideway aerial view"
+          className="w-full h-full object-cover blur-[2px]"
         />
       </div>
+
+      {/* Cinematic gradient overlays — layered depth */}
+      <div className="absolute inset-0 bg-gradient-to-b from-brand-blue-dark/70 via-brand-blue-dark/30 to-brand-blue-dark/80" />
+      <div className="absolute inset-0 bg-gradient-to-r from-brand-blue-dark/50 via-transparent to-brand-blue-dark/50" />
       
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 hero-overlay" />
+      {/* Vignette effect */}
+      <div className="absolute inset-0" style={{
+        background: 'radial-gradient(ellipse at center, transparent 40%, hsl(217 80% 10% / 0.6) 100%)'
+      }} />
+
+      {/* Translucent floating panels for depth */}
+      <div className="absolute top-[15%] left-[5%] w-48 h-48 md:w-72 md:h-72 rounded-3xl bg-brand-orange/5 backdrop-blur-md border border-brand-orange/10 rotate-12 animate-float hidden sm:block" />
+      <div className="absolute bottom-[20%] right-[8%] w-40 h-40 md:w-56 md:h-56 rounded-3xl bg-brand-sky/5 backdrop-blur-md border border-brand-sky/10 -rotate-6 animate-float animation-delay-300 hidden sm:block" />
       
-      {/* Additional Blue Overlay for readability */}
-      <div className="absolute inset-0 bg-brand-blue-dark/40" />
+      {/* Subtle light leak / lens flare */}
+      <div className="absolute top-0 right-[20%] w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-full opacity-20" style={{
+        background: 'radial-gradient(circle, hsl(28 92% 54% / 0.4), transparent 70%)',
+        filter: 'blur(60px)',
+      }} />
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
+        {/* Location badge — translucent surface */}
         <div className="animate-fade-in-up">
-          <span className="inline-block px-6 py-2 mb-6 text-brand-orange border border-brand-orange/40 rounded-full text-sm tracking-widest uppercase bg-brand-blue-dark/50 backdrop-blur-sm">
+          <span className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 mb-6 sm:mb-8 text-brand-orange border border-brand-orange/30 rounded-full text-xs sm:text-sm tracking-[0.2em] uppercase bg-brand-blue-dark/40 backdrop-blur-xl shadow-[0_4px_30px_hsl(28_92%_54%/0.1)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-pulse" />
             Big Ada, Ghana
           </span>
         </div>
 
-        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 animate-fade-in-up animation-delay-100 leading-tight">
-          <span className="text-brand-sky-light">Paradasia</span>
-          <span className="block text-orange-gradient">Hideway</span>
+        {/* Headline — dramatic contrast */}
+        <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl mb-4 sm:mb-6 animate-fade-in-up animation-delay-100 leading-[0.9] tracking-tight">
+          <span className="text-brand-sky-light drop-shadow-[0_2px_20px_hsl(200_60%_80%/0.3)]">Paradasia</span>
+          <span className="block text-orange-gradient drop-shadow-[0_2px_30px_hsl(28_92%_54%/0.4)] mt-1 sm:mt-2">Hideway</span>
         </h1>
 
-        <p className="text-lg sm:text-xl md:text-2xl text-brand-sky mb-4 animate-fade-in-up animation-delay-200 font-light max-w-3xl mx-auto">
-          Culture blended in tour, good food, good music, clean beaches.
-        </p>
+        {/* Tagline — soft translucent panel */}
+        <div className="animate-fade-in-up animation-delay-200">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-brand-sky/90 mb-3 sm:mb-4 font-light max-w-3xl mx-auto leading-relaxed px-2">
+            Culture blended in tour, good food, good music, clean beaches.
+          </p>
+        </div>
 
-        <p className="text-base sm:text-lg text-brand-sky/80 mb-10 animate-fade-in-up animation-delay-300 max-w-2xl mx-auto">
-          Your exclusive island sanctuary near Aqua Safari — where Pan-African luxury meets aquatic serenity.
-        </p>
+        <div className="animate-fade-in-up animation-delay-300">
+          <div className="inline-block px-4 sm:px-8 py-3 sm:py-4 rounded-2xl bg-brand-blue-dark/30 backdrop-blur-lg border border-brand-sky/10 mb-8 sm:mb-10">
+            <p className="text-sm sm:text-base lg:text-lg text-brand-sky/70 max-w-2xl mx-auto">
+              Your exclusive island sanctuary near Aqua Safari — where Pan-African luxury meets aquatic serenity.
+            </p>
+          </div>
+        </div>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up animation-delay-400">
-          <Button variant="hero" size="xl">
-            Book Your Escape
-          </Button>
+        {/* CTAs */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 animate-fade-in-up animation-delay-400">
+          <a href="#accommodation">
+            <Button variant="hero" size="xl" className="w-full sm:w-auto min-w-[200px] shadow-[0_8px_30px_hsl(28_92%_54%/0.3)]">
+              Book Your Escape
+            </Button>
+          </a>
           <a href="#about">
-            <Button variant="hero-outline" size="xl">
+            <Button variant="hero-outline" size="xl" className="w-full sm:w-auto min-w-[200px] backdrop-blur-sm">
               Explore Paradasia
             </Button>
           </a>
         </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-float">
-          <a
-            href="#showcase"
-            className="flex flex-col items-center gap-2 text-brand-sky hover:text-brand-orange transition-colors"
-          >
-            <span className="text-xs tracking-widest uppercase">See More</span>
-            <ChevronDown className="w-6 h-6" />
-          </a>
-        </div>
       </div>
 
-      {/* Decorative Elements */}
-      <div className="absolute top-20 left-10 w-32 h-32 border border-brand-orange/20 rounded-full animate-float" />
-      <div className="absolute bottom-40 right-10 w-24 h-24 border border-brand-sky/20 rounded-full animate-float animation-delay-200" />
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 animate-float z-10">
+        <a
+          href="#showcase"
+          className="flex flex-col items-center gap-2 text-brand-sky/60 hover:text-brand-orange transition-colors"
+        >
+          <span className="text-[10px] sm:text-xs tracking-[0.3em] uppercase">Discover</span>
+          <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6" />
+        </a>
+      </div>
     </section>
   );
 };
