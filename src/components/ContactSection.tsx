@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MapPin, Phone, Mail, Instagram, Facebook, Twitter, Loader2 } from "lucide-react";
+import { MapPin, Phone, Mail, Instagram, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -7,14 +7,30 @@ import { contactFormSchema, type ContactFormData } from "@/lib/validations";
 
 const contactInfo = [
   { icon: MapPin, label: "Location", value: "Big Ada Island, near Aqua Safari", subtext: "Greater Accra Region, Ghana" },
-  { icon: Phone, label: "Phone", value: "+233 24 481 9524", subtext: "Available 24/7" },
+  { icon: Phone, label: "Phone", value: "+233 558 391 399", subtext: "+233 503 364 928" },
   { icon: Mail, label: "Email", value: "info@paradasiahideway.com", subtext: "We respond within 24 hours" },
 ];
 
 const socialLinks = [
-  { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: Facebook, href: "#", label: "Facebook" },
-  { icon: Twitter, href: "#", label: "Twitter" },
+  { icon: Instagram, href: "https://www.instagram.com/paradiasiahideway", label: "Instagram" },
+  {
+    icon: () => (
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+      </svg>
+    ),
+    href: "https://www.tiktok.com/@paradiasiahideway",
+    label: "TikTok",
+  },
+  {
+    icon: () => (
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.7 3.5H6.3C4.5 3.5 3 5 3 6.8v10.4c0 1.8 1.5 3.3 3.3 3.3h11.4c1.8 0 3.3-1.5 3.3-3.3V6.8c0-1.8-1.5-3.3-3.3-3.3zm-8.1 13c-1.5 0-2.7-.6-3.6-1.5l1.2-1.2c.6.6 1.5 1 2.4 1 1.2 0 2.1-.6 2.1-1.5s-.6-1.2-1.8-1.5l-.6-.2c-1.8-.5-2.7-1.2-2.7-2.7 0-1.5 1.2-2.7 3-2.7 1.2 0 2.1.5 2.7 1.2l-1.2 1.2c-.3-.5-.9-.8-1.5-.8-.9 0-1.5.5-1.5 1.2s.5 1 1.5 1.2l.6.2c1.8.5 3 1.2 3 2.8-.1 1.8-1.5 3-3.6 3zm7.8-.3h-1.8v-5.1l-1.5 3.6h-1.2l-1.5-3.6v5.1H9.6V7.5h1.8l1.8 4.5 1.8-4.5h1.8v8.7h.6z" />
+      </svg>
+    ),
+    href: "https://www.airbnb.com",
+    label: "Airbnb",
+  },
 ];
 
 export const ContactSection = () => {
