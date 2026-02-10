@@ -1,5 +1,5 @@
 import { Heart, Compass, Waves, Home } from "lucide-react";
-import paradasiaSunset from "@/assets/paradasia-sunset-1.jpg";
+import paradasiaAerialNight from "@/assets/paradasia-aerial-night.jpg";
 
 const features = [
   {
@@ -33,8 +33,8 @@ export const AboutSection = () => {
           <div className="relative">
             <div className="relative rounded-2xl overflow-hidden shadow-elevation-5">
               <img
-                src={paradasiaSunset}
-                alt="Paradasia Hideway sunset view over Big Ada"
+                src={paradasiaAerialNight}
+                alt="Paradasia Hideway glowing under the stars — your island sanctuary awaits"
                 className="w-full h-[500px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-blue-dark/60 to-transparent" />
