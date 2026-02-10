@@ -18,37 +18,37 @@ const TikTokIcon = ({ className }: { className?: string }) => (
 const shorts = [
   {
     id: "short1",
-    videoId: "7552565509990172171",
+    videoId: "7559524720882765067",
     title: "Paradise Awaits at Paradasia Hideway",
     thumbnail: paradasiaWineLagoon,
   },
   {
     id: "short2",
-    videoId: "7552565509990172171",
+    videoId: "7558025403663682828",
     title: "Panoramic Views of Big Ada",
     thumbnail: paradasiaView,
   },
   {
     id: "short3",
-    videoId: "7552565509990172171",
+    videoId: "7602648414978886930",
     title: "Luxury Island Living in Ghana",
     thumbnail: paradasiaSuiteLounge,
   },
   {
     id: "short4",
-    videoId: "7552565509990172171",
+    videoId: "7555418406397250828",
     title: "Thrilling Jetski Adventures",
     thumbnail: paradasiaJetski1,
   },
   {
     id: "short5",
-    videoId: "7552565509990172171",
+    videoId: "7551715459763031307",
     title: "Serenity on the Water",
     thumbnail: paradasiaFloating1,
   },
   {
     id: "short6",
-    videoId: "7552565509990172171",
+    videoId: "7559524720882765067",
     title: "Bonfire Nights",
     thumbnail: paradasiaBonfire,
   },
