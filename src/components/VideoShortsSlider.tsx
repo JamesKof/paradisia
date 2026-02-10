@@ -8,41 +8,47 @@ import paradasiaBonfire from "@/assets/paradasia-bonfire.jpg";
 import paradasiaSuiteLounge from "@/assets/paradasia-suite-lounge.jpg";
 import paradasiaView from "@/assets/paradasia-view.jpg";
 
-// Paradasia Hideway video content with real property images
+const TikTokIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.75a8.18 8.18 0 0 0 3.76.92V6.69Z" />
+  </svg>
+);
+
+// Curated TikTok videos from @paradasia.hideway
 const shorts = [
   {
     id: "short1",
-    videoId: "DJwGD0CZyrk",
+    videoId: "7449573818498498822",
     title: "Paradise Awaits at Paradasia Hideway",
     thumbnail: paradasiaWineLagoon,
   },
   {
     id: "short2",
-    videoId: "DJwGD0CZyrk",
+    videoId: "7449573818498498822",
     title: "Panoramic Views of Big Ada",
     thumbnail: paradasiaView,
   },
   {
     id: "short3",
-    videoId: "DJwGD0CZyrk",
+    videoId: "7449573818498498822",
     title: "Luxury Island Living in Ghana",
     thumbnail: paradasiaSuiteLounge,
   },
   {
     id: "short4",
-    videoId: "DJwGD0CZyrk",
+    videoId: "7449573818498498822",
     title: "Thrilling Jetski Adventures",
     thumbnail: paradasiaJetski1,
   },
   {
     id: "short5",
-    videoId: "DJwGD0CZyrk",
+    videoId: "7449573818498498822",
     title: "Serenity on the Water",
     thumbnail: paradasiaFloating1,
   },
   {
     id: "short6",
-    videoId: "DJwGD0CZyrk",
+    videoId: "7449573818498498822",
     title: "Bonfire Nights",
     thumbnail: paradasiaBonfire,
   },
@@ -61,18 +67,19 @@ export const VideoShortsSlider = () => {
         <div className="flex items-center justify-between">
           <div>
             <span className="inline-block text-brand-blue-dark text-sm tracking-widest uppercase mb-2 font-semibold">
-              Featured Videos
+              Follow Us on TikTok
             </span>
             <h2 className="font-display text-2xl sm:text-3xl text-brand-blue-dark">
               Experience <span className="text-white">Paradasia</span>
             </h2>
           </div>
           <a
-            href="https://www.youtube.com/@ParadasiaHideway"
+            href="https://www.tiktok.com/@paradasia.hideway"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-brand-blue-dark hover:text-white transition-colors text-sm font-medium"
+            className="flex items-center gap-2 text-brand-blue-dark hover:text-white transition-colors text-sm font-medium"
           >
+            <TikTokIcon className="w-4 h-4" />
             View All →
           </a>
         </div>
@@ -108,6 +115,11 @@ export const VideoShortsSlider = () => {
                 {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-blue-dark via-brand-blue-dark/30 to-transparent" />
                 
+                {/* TikTok Badge */}
+                <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center">
+                  <TikTokIcon className="w-4 h-4 text-white" />
+                </div>
+
                 {/* Play Button */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-white shadow-lg">
@@ -129,14 +141,14 @@ export const VideoShortsSlider = () => {
           ))}
         </div>
 
-        {/* Fade Edges - match orange gradient */}
+        {/* Fade Edges */}
         <div className="absolute left-0 top-0 bottom-0 w-20 pointer-events-none z-10" style={{ background: 'linear-gradient(to right, hsl(28 90% 45%), transparent)' }} />
         <div className="absolute right-0 top-0 bottom-0 w-20 pointer-events-none z-10" style={{ background: 'linear-gradient(to left, hsl(35 95% 60%), transparent)' }} />
       </div>
 
-      {/* Video Modal */}
+      {/* TikTok Video Modal */}
       <Dialog open={!!selectedVideo} onOpenChange={() => setSelectedVideo(null)}>
-        <DialogContent className="max-w-4xl p-0 bg-brand-blue-dark border-brand-blue overflow-hidden">
+        <DialogContent className="max-w-md p-0 bg-brand-blue-dark border-brand-blue overflow-hidden">
           <button
             onClick={() => setSelectedVideo(null)}
             className="absolute top-4 right-4 z-50 w-10 h-10 rounded-full bg-brand-blue/80 text-brand-sky-light hover:bg-brand-orange hover:text-brand-blue-dark transition-colors flex items-center justify-center"
@@ -144,12 +156,12 @@ export const VideoShortsSlider = () => {
             <X className="w-5 h-5" />
           </button>
           {selectedVideo && (
-            <div className="aspect-video">
+            <div className="aspect-[9/16] w-full">
               <iframe
                 className="w-full h-full"
-                src={`https://www.youtube.com/embed/${selectedVideo}?autoplay=1&rel=0`}
-                title="Paradasia Hideway Video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                src={`https://www.tiktok.com/embed/v2/${selectedVideo}`}
+                title="Paradasia Hideway TikTok"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
                 allowFullScreen
               />
             </div>
