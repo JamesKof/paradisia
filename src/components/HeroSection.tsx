@@ -1,5 +1,5 @@
 import { ChevronDown } from "lucide-react";
-import heroBg from "@/assets/paradasia-cover.jpg";
+import heroBg from "@/assets/paradasia-view.jpg";
 import { Button } from "@/components/ui/button";
 
 export const HeroSection = () => {
