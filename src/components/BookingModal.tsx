@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Calendar, Users, CreditCard } from "lucide-react";
+import { Calendar, Users, CreditCard, Info } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { bookingFormSchema, type BookingFormData } from "@/lib/validations";
+import { calculateStayTotal, ROOM_PRICING } from "@/lib/roomTypes";
 
 interface BookingModalProps {
   isOpen: boolean;
   onClose: () => void;
-  roomType: "presidential" | "standard";
+  roomType: "cabin" | "villa" | "full_property";
   roomName: string;
-  pricePerNight: number;
 }
 
 declare global {
@@ -33,7 +33,7 @@ declare global {
   }
 }
 
-export const BookingModal = ({ isOpen, onClose, roomType, roomName, pricePerNight }: BookingModalProps) => {
+export const BookingModal = ({ isOpen, onClose, roomType, roomName }: BookingModalProps) => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -54,14 +54,9 @@ export const BookingModal = ({ isOpen, onClose, roomType, roomName, pricePerNigh
     document.body.appendChild(script);
   }, []);
 
-  const calculateNights = () => {
-    if (!formData.checkIn || !formData.checkOut) return 0;
-    const diff = Math.ceil((new Date(formData.checkOut).getTime() - new Date(formData.checkIn).getTime()) / (1000 * 60 * 60 * 24));
-    return diff > 0 ? diff : 0;
-  };
-
-  const nights = calculateNights();
-  const totalAmount = nights * pricePerNight;
+  const pricing = ROOM_PRICING[roomType];
+  const stayCalc = calculateStayTotal(roomType, formData.checkIn, formData.checkOut);
+  const { total: totalAmount, weekdayNights, weekendNights, totalNights } = stayCalc;
 
   const handleChange = (field: keyof BookingFormData, value: string | number) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -83,7 +78,7 @@ export const BookingModal = ({ isOpen, onClose, roomType, roomName, pricePerNigh
   const createBooking = async (paymentRef: string, status: "confirmed" | "pending" = "confirmed", paymentStatus: "paid" | "pending" = "paid") => {
     const { data: booking, error } = await supabase.from("bookings").insert({
       user_id: user!.id, email: formData.email, first_name: formData.firstName, last_name: formData.lastName,
-      phone: formData.phone || null, room_type: roomType, room_price: pricePerNight, check_in: formData.checkIn,
+      phone: formData.phone || null, room_type: roomType as any, room_price: pricing.weekday, check_in: formData.checkIn,
       check_out: formData.checkOut, guests: formData.guests, special_requests: formData.specialRequests || null,
       booking_status: status, payment_status: paymentStatus, payment_reference: paymentRef, total_amount: totalAmount,
     }).select().single();
@@ -96,7 +91,7 @@ export const BookingModal = ({ isOpen, onClose, roomType, roomName, pricePerNigh
   const handlePaystackPopup = async () => {
     if (!user) { toast({ title: "Login Required", description: "Please login to make a booking.", variant: "destructive" }); navigate("/auth"); return; }
     if (!validateForm()) { toast({ title: "Validation Error", description: "Please fix the errors in the form.", variant: "destructive" }); return; }
-    if (nights <= 0) { toast({ title: "Invalid Dates", description: "Please select valid check-in and check-out dates.", variant: "destructive" }); return; }
+    if (totalNights <= 0) { toast({ title: "Invalid Dates", description: "Please select valid check-in and check-out dates.", variant: "destructive" }); return; }
     if (!paystackLoaded || !window.PaystackPop) { toast({ title: "Payment Loading", description: "Payment system is loading. Please try again.", variant: "destructive" }); return; }
 
     const paystackKey = import.meta.env.VITE_PAYSTACK_PUBLIC_KEY;
@@ -109,7 +104,7 @@ export const BookingModal = ({ isOpen, onClose, roomType, roomName, pricePerNigh
       key: paystackKey, email: formData.email, amount: totalAmount * 100, currency: "GHS", ref: paymentRef,
       metadata: { custom_fields: [
         { display_name: "Guest Name", variable_name: "guest_name", value: `${formData.firstName} ${formData.lastName}` },
-        { display_name: "Room Type", variable_name: "room_type", value: roomType },
+        { display_name: "Room Type", variable_name: "room_type", value: roomName },
         { display_name: "Check-in", variable_name: "check_in", value: formData.checkIn },
         { display_name: "Check-out", variable_name: "check_out", value: formData.checkOut },
       ]},
@@ -132,7 +127,7 @@ export const BookingModal = ({ isOpen, onClose, roomType, roomName, pricePerNigh
   const handleDemoBooking = async () => {
     if (!user) { toast({ title: "Login Required", description: "Please login to make a booking.", variant: "destructive" }); navigate("/auth"); return; }
     if (!validateForm()) { toast({ title: "Validation Error", description: "Please fix the errors in the form.", variant: "destructive" }); return; }
-    if (nights <= 0) { toast({ title: "Invalid Dates", description: "Please select valid check-in and check-out dates.", variant: "destructive" }); return; }
+    if (totalNights <= 0) { toast({ title: "Invalid Dates", description: "Please select valid check-in and check-out dates.", variant: "destructive" }); return; }
 
     setIsProcessing(true);
     try {
@@ -161,16 +156,28 @@ export const BookingModal = ({ isOpen, onClose, roomType, roomName, pricePerNigh
         </DialogHeader>
 
         <div className="space-y-5 py-4">
-          {/* Room Info */}
-          <div className="flex items-center justify-between p-4 bg-muted/50 rounded-lg border border-border">
-            <div>
-              <p className="text-foreground font-medium">{roomName}</p>
-              <p className="text-muted-foreground text-sm">GH₵{pricePerNight.toLocaleString()} per night</p>
+          {/* Room Info & Pricing */}
+          <div className="p-4 bg-muted/50 rounded-lg border border-border">
+            <p className="text-foreground font-medium mb-2">{roomName}</p>
+            <div className="flex gap-3 text-sm">
+              <div className="flex-1 text-center">
+                <p className="text-brand-orange font-bold">GH₵{pricing.weekday.toLocaleString()}</p>
+                <p className="text-muted-foreground text-xs">Weekday/night</p>
+              </div>
+              <div className="flex-1 text-center">
+                <p className="text-brand-orange font-bold">GH₵{pricing.weekend.toLocaleString()}</p>
+                <p className="text-muted-foreground text-xs">Weekend/night</p>
+              </div>
             </div>
-            {nights > 0 && (
-              <div className="text-right">
-                <p className="text-brand-orange font-bold text-lg">GH₵{totalAmount.toLocaleString()}</p>
-                <p className="text-muted-foreground text-xs">{nights} night{nights > 1 ? "s" : ""}</p>
+            {totalNights > 0 && (
+              <div className="mt-3 pt-3 border-t border-border">
+                <div className="flex items-center gap-1 text-muted-foreground text-xs mb-1">
+                  <Info className="w-3 h-3" />
+                  {weekdayNights > 0 && <span>{weekdayNights} weekday night{weekdayNights > 1 ? "s" : ""}</span>}
+                  {weekdayNights > 0 && weekendNights > 0 && <span>+</span>}
+                  {weekendNights > 0 && <span>{weekendNights} weekend night{weekendNights > 1 ? "s" : ""}</span>}
+                </div>
+                <p className="text-brand-orange font-bold text-lg">Total: GH₵{totalAmount.toLocaleString()}</p>
               </div>
             )}
           </div>
@@ -194,7 +201,7 @@ export const BookingModal = ({ isOpen, onClose, roomType, roomName, pricePerNigh
             <label className="block text-muted-foreground text-sm mb-2"><Users className="w-4 h-4 inline mr-1" />Number of Guests</label>
             <select value={formData.guests} onChange={(e) => handleChange("guests", Number(e.target.value))}
               className="w-full px-4 py-3 bg-muted/50 border border-border rounded-lg text-foreground focus:outline-none focus:border-brand-orange">
-              {[1,2,3,4].map(n => <option key={n} value={n}>{n} Guest{n > 1 ? "s" : ""}</option>)}
+              {[1,2,3,4,5,6,7,8,9,10].map(n => <option key={n} value={n}>{n} Guest{n > 1 ? "s" : ""}</option>)}
             </select>
           </div>
 
@@ -233,11 +240,11 @@ export const BookingModal = ({ isOpen, onClose, roomType, roomName, pricePerNigh
 
           {/* Payment Buttons */}
           <div className="space-y-3">
-            <Button variant="orange" size="lg" className="w-full" onClick={handlePaystackPopup} disabled={isProcessing || nights <= 0}>
+            <Button variant="orange" size="lg" className="w-full" onClick={handlePaystackPopup} disabled={isProcessing || totalNights <= 0}>
               <CreditCard className="w-5 h-5 mr-2" />
               {isProcessing ? "Processing..." : `Pay Now - GH₵${totalAmount.toLocaleString()}`}
             </Button>
-            <Button variant="outline" size="lg" className="w-full" onClick={handleDemoBooking} disabled={isProcessing || nights <= 0}>
+            <Button variant="outline" size="lg" className="w-full" onClick={handleDemoBooking} disabled={isProcessing || totalNights <= 0}>
               Demo Booking (No Payment)
             </Button>
           </div>

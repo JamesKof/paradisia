@@ -245,7 +245,12 @@ export type Database = {
       app_role: "admin" | "moderator" | "user"
       booking_status: "pending" | "confirmed" | "cancelled" | "completed"
       payment_status: "pending" | "paid" | "refunded" | "failed"
-      room_type: "presidential" | "standard"
+      room_type:
+        | "presidential"
+        | "standard"
+        | "cabin"
+        | "villa"
+        | "full_property"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -376,7 +381,13 @@ export const Constants = {
       app_role: ["admin", "moderator", "user"],
       booking_status: ["pending", "confirmed", "cancelled", "completed"],
       payment_status: ["pending", "paid", "refunded", "failed"],
-      room_type: ["presidential", "standard"],
+      room_type: [
+        "presidential",
+        "standard",
+        "cabin",
+        "villa",
+        "full_property",
+      ],
     },
   },
 } as const

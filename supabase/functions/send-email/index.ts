@@ -50,7 +50,14 @@ const formatDate = (dateString: string) => {
 };
 
 const getRoomName = (roomType: string) => {
-  return roomType === "presidential" ? "Presidential Suite" : "Standard Room";
+  const names: Record<string, string> = {
+    cabin: "Cabin (Standalone)",
+    villa: "Villa – 2 Bedroom",
+    full_property: "Full Property Buyout",
+    presidential: "Presidential Suite",
+    standard: "Standard Room",
+  };
+  return names[roomType] || roomType;
 };
 
 serve(async (req) => {
