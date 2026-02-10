@@ -7,77 +7,83 @@
 @layer base {
   :root {
     /* Brand Colors from Logo */
-    /* Deep Blue - Primary (palm tree, waves, main text) */
-    --brand-blue: 217 75% 35%;
-    --brand-blue-light: 217 65% 50%;
-    --brand-blue-dark: 217 80% 25%;
-    --brand-blue-muted: 217 40% 60%;
+    --brand-blue: 217 55% 40%;
+    --brand-blue-light: 217 45% 55%;
+    --brand-blue-dark: 220 30% 18%;
+    --brand-blue-muted: 217 30% 55%;
     
     /* Sunset Orange - Accent (sun) */
     --brand-orange: 28 92% 54%;
     --brand-orange-light: 28 95% 65%;
     --brand-orange-dark: 28 90% 45%;
     
-    /* Sky Blue - Secondary (HIDEWAY text) */
-    --brand-sky: 200 55% 65%;
-    --brand-sky-light: 200 60% 80%;
+    /* Sky Blue - Secondary */
+    --brand-sky: 200 40% 55%;
+    --brand-sky-light: 200 50% 75%;
     
     /* Ocean Teal */
-    --ocean: 195 70% 45%;
-    --ocean-light: 195 60% 70%;
-    --ocean-dark: 195 80% 30%;
+    --ocean: 195 50% 45%;
+    --ocean-light: 195 45% 70%;
+    --ocean-dark: 195 60% 30%;
     
-    /* Base colors */
-    --background: 200 20% 98%;
-    --foreground: 217 80% 20%;
+    /* Base colors — warm white, balanced */
+    --background: 30 20% 98%;
+    --foreground: 220 20% 20%;
     
     --card: 0 0% 100%;
-    --card-foreground: 217 80% 20%;
+    --card-foreground: 220 20% 20%;
     
     --popover: 0 0% 100%;
-    --popover-foreground: 217 80% 20%;
+    --popover-foreground: 220 20% 20%;
     
-    --primary: 217 75% 35%;
+    --primary: 28 92% 54%;
     --primary-foreground: 0 0% 100%;
     
-    --secondary: 28 92% 54%;
-    --secondary-foreground: 217 80% 20%;
+    --secondary: 30 15% 93%;
+    --secondary-foreground: 220 20% 20%;
     
-    --muted: 200 15% 92%;
-    --muted-foreground: 217 30% 45%;
+    --muted: 30 10% 93%;
+    --muted-foreground: 220 10% 45%;
     
-    --accent: 28 92% 54%;
-    --accent-foreground: 217 80% 20%;
+    --accent: 28 80% 92%;
+    --accent-foreground: 28 90% 35%;
     
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     
-    --border: 200 20% 88%;
-    --input: 200 20% 88%;
+    --border: 30 15% 88%;
+    --input: 30 15% 88%;
     --ring: 28 92% 54%;
     
     --radius: 0.75rem;
     
-    /* Elevation shadows with brand tint */
-    --shadow-1: 0 1px 3px hsl(217 50% 30% / 0.08), 0 1px 2px hsl(217 75% 35% / 0.06);
-    --shadow-2: 0 3px 6px hsl(217 50% 30% / 0.1), 0 2px 4px hsl(217 75% 35% / 0.08);
-    --shadow-3: 0 6px 12px hsl(217 50% 30% / 0.12), 0 4px 8px hsl(217 75% 35% / 0.1);
-    --shadow-4: 0 10px 20px hsl(217 50% 30% / 0.15), 0 6px 10px hsl(217 75% 35% / 0.12);
-    --shadow-5: 0 15px 30px hsl(217 50% 30% / 0.18), 0 10px 15px hsl(217 75% 35% / 0.15);
-    --shadow-6: 0 25px 50px hsl(217 50% 30% / 0.22), 0 15px 25px hsl(217 75% 35% / 0.18);
+    /* Elevation shadows — neutral */
+    --shadow-1: 0 1px 3px hsl(220 15% 30% / 0.06), 0 1px 2px hsl(220 15% 30% / 0.04);
+    --shadow-2: 0 3px 6px hsl(220 15% 30% / 0.08), 0 2px 4px hsl(220 15% 30% / 0.06);
+    --shadow-3: 0 6px 12px hsl(220 15% 30% / 0.1), 0 4px 8px hsl(220 15% 30% / 0.08);
+    --shadow-4: 0 10px 20px hsl(220 15% 30% / 0.12), 0 6px 10px hsl(220 15% 30% / 0.1);
+    --shadow-5: 0 15px 30px hsl(220 15% 30% / 0.15), 0 10px 15px hsl(220 15% 30% / 0.12);
+    --shadow-6: 0 25px 50px hsl(220 15% 30% / 0.18), 0 15px 25px hsl(220 15% 30% / 0.15);
     
-    /* Orange glow */
-    --glow-orange: 0 0 30px hsl(28 92% 54% / 0.5);
-    --glow-blue: 0 0 30px hsl(217 75% 35% / 0.4);
+    /* Glows */
+    --glow-orange: 0 0 30px hsl(28 92% 54% / 0.4);
+    --glow-blue: 0 0 30px hsl(217 55% 40% / 0.3);
     
     /* Gradients */
     --gradient-orange: linear-gradient(135deg, hsl(28 90% 45%), hsl(28 92% 54%), hsl(28 95% 65%));
     --gradient-orange-shine: linear-gradient(135deg, hsl(28 95% 65%), hsl(28 92% 54%), hsl(28 90% 45%));
-    --gradient-blue: linear-gradient(180deg, hsl(217 75% 35%), hsl(217 80% 25%));
-    --gradient-ocean: linear-gradient(180deg, hsl(195 70% 45%), hsl(217 80% 25%));
-    --gradient-hero: linear-gradient(180deg, hsl(217 80% 15% / 0.4), hsl(217 80% 10% / 0.8));
-    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(200 20% 98%));
+    --gradient-blue: linear-gradient(180deg, hsl(217 55% 40%), hsl(220 30% 18%));
+    --gradient-ocean: linear-gradient(180deg, hsl(195 50% 45%), hsl(220 30% 18%));
+    --gradient-hero: linear-gradient(180deg, hsl(220 20% 15% / 0.5), hsl(220 20% 10% / 0.8));
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(30 20% 98%));
     --gradient-sunset: linear-gradient(135deg, hsl(28 92% 54%), hsl(35 100% 60%), hsl(45 100% 70%));
+
+    /* Dark section bg — used for accommodation, contact, footer */
+    --section-dark-bg: 220 20% 14%;
+    --section-dark-text: 30 20% 92%;
+    --section-dark-muted: 220 15% 55%;
+    --section-dark-card: 220 18% 20%;
+    --section-dark-border: 220 15% 25%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -90,41 +96,62 @@
   }
 
   .dark {
-    --background: 217 80% 8%;
-    --foreground: 200 20% 95%;
+    --brand-blue: 217 50% 55%;
+    --brand-blue-light: 217 45% 65%;
+    --brand-blue-dark: 220 25% 12%;
+    --brand-blue-muted: 217 30% 50%;
     
-    --card: 217 70% 12%;
-    --card-foreground: 200 20% 95%;
+    --brand-sky: 200 45% 65%;
+    --brand-sky-light: 200 50% 80%;
+
+    --background: 220 18% 10%;
+    --foreground: 30 15% 92%;
     
-    --popover: 217 70% 12%;
-    --popover-foreground: 200 20% 95%;
+    --card: 220 16% 14%;
+    --card-foreground: 30 15% 92%;
+    
+    --popover: 220 16% 14%;
+    --popover-foreground: 30 15% 92%;
     
     --primary: 28 92% 54%;
-    --primary-foreground: 217 80% 15%;
+    --primary-foreground: 220 20% 10%;
     
-    --secondary: 217 50% 20%;
-    --secondary-foreground: 200 20% 95%;
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 30 15% 92%;
     
-    --muted: 217 40% 15%;
-    --muted-foreground: 200 20% 65%;
+    --muted: 220 12% 16%;
+    --muted-foreground: 30 10% 60%;
     
-    --accent: 28 92% 54%;
-    --accent-foreground: 217 80% 15%;
+    --accent: 28 70% 20%;
+    --accent-foreground: 28 92% 65%;
     
     --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 100%;
     
-    --border: 217 40% 20%;
-    --input: 217 40% 20%;
+    --border: 220 12% 22%;
+    --input: 220 12% 22%;
     --ring: 28 92% 54%;
 
-    --sidebar-background: 240 5.9% 10%;
+    --section-dark-bg: 220 22% 8%;
+    --section-dark-text: 30 15% 90%;
+    --section-dark-muted: 220 12% 50%;
+    --section-dark-card: 220 18% 13%;
+    --section-dark-border: 220 12% 18%;
+
+    --shadow-1: 0 1px 3px hsl(0 0% 0% / 0.2), 0 1px 2px hsl(0 0% 0% / 0.15);
+    --shadow-2: 0 3px 6px hsl(0 0% 0% / 0.25), 0 2px 4px hsl(0 0% 0% / 0.2);
+    --shadow-3: 0 6px 12px hsl(0 0% 0% / 0.3), 0 4px 8px hsl(0 0% 0% / 0.25);
+    --shadow-4: 0 10px 20px hsl(0 0% 0% / 0.35), 0 6px 10px hsl(0 0% 0% / 0.3);
+    --shadow-5: 0 15px 30px hsl(0 0% 0% / 0.4), 0 10px 15px hsl(0 0% 0% / 0.35);
+    --shadow-6: 0 25px 50px hsl(0 0% 0% / 0.45), 0 15px 25px hsl(0 0% 0% / 0.4);
+
+    --sidebar-background: 220 18% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent: 220 12% 16%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-border: 220 12% 16%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
@@ -203,6 +230,17 @@
     @apply py-24 px-4 md:px-8 lg:px-16;
   }
 
+  /* Dark sections — accommodation, contact, footer */
+  .section-dark {
+    background: hsl(var(--section-dark-bg));
+    color: hsl(var(--section-dark-text));
+  }
+
+  .section-dark-card {
+    background: hsl(var(--section-dark-card));
+    border-color: hsl(var(--section-dark-border));
+  }
+
   /* Orange focus ring */
   .orange-focus:focus {
     @apply outline-none ring-2 ring-brand-orange ring-offset-2 ring-offset-background;
@@ -235,7 +273,6 @@
 }
 
 @layer utilities {
-  /* Custom animations */
   @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
@@ -252,58 +289,25 @@
   }
 
   @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   @keyframes scaleIn {
-    from {
-      opacity: 0;
-      transform: scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
   }
 
   @keyframes slideIn {
-    from {
-      opacity: 0;
-      transform: translateX(100px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+    from { opacity: 0; transform: translateX(100px); }
+    to { opacity: 1; transform: translateX(0); }
   }
 
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
-
-  .animate-shimmer {
-    background-size: 200% auto;
-    animation: shimmer 3s linear infinite;
-  }
-
-  .animate-fade-in-up {
-    animation: fadeInUp 0.6s ease-out forwards;
-  }
-
-  .animate-scale-in {
-    animation: scaleIn 0.4s ease-out forwards;
-  }
-
-  .animate-slide-in {
-    animation: slideIn 0.6s ease-out forwards;
-  }
+  .animate-float { animation: float 3s ease-in-out infinite; }
+  .animate-shimmer { background-size: 200% auto; animation: shimmer 3s linear infinite; }
+  .animate-fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+  .animate-scale-in { animation: scaleIn 0.4s ease-out forwards; }
+  .animate-slide-in { animation: slideIn 0.6s ease-out forwards; }
 
   .animation-delay-100 { animation-delay: 100ms; }
   .animation-delay-200 { animation-delay: 200ms; }

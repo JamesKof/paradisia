@@ -57,18 +57,18 @@ export const AccommodationSection = () => {
   };
 
   return (
-    <section id="accommodation" className="section-padding bg-brand-blue-dark">
+    <section id="accommodation" className="section-padding section-dark">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
           <span className="inline-block text-brand-orange text-sm tracking-widest uppercase mb-4">
             Accommodation
           </span>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-brand-sky-light mb-6">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-[hsl(var(--section-dark-text))] mb-6">
             Luxurious Island
             <span className="text-brand-orange block">Sanctuaries</span>
           </h2>
-          <p className="text-brand-sky/80 text-lg max-w-2xl mx-auto">
+          <p className="text-[hsl(var(--section-dark-muted))] text-lg max-w-2xl mx-auto">
             Choose from our carefully curated accommodations, each designed to provide 
             the ultimate in comfort and Pan-African elegance.
           </p>
@@ -79,7 +79,7 @@ export const AccommodationSection = () => {
           {rooms.map((room) => (
             <div
               key={room.id}
-              className="group relative bg-brand-blue-light rounded-2xl overflow-hidden border border-brand-blue hover:border-brand-orange/30 transition-all duration-500 shadow-elevation-4 hover:shadow-elevation-6"
+              className="group relative section-dark-card rounded-2xl overflow-hidden border transition-all duration-500 shadow-elevation-4 hover:shadow-elevation-6 hover:border-brand-orange/30"
             >
               {/* Image */}
               <div className="relative h-52 sm:h-64 lg:h-72 overflow-hidden">
@@ -88,15 +88,15 @@ export const AccommodationSection = () => {
                   alt={room.name}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-blue-dark via-brand-blue-dark/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
                 
                 {/* Price Badge */}
-                <div className="absolute top-4 right-4 bg-gradient-to-r from-brand-orange-dark via-brand-orange to-brand-orange-light text-brand-blue-dark px-4 py-2 rounded-full font-bold shadow-elevation-3">
+                <div className="absolute top-4 right-4 bg-gradient-to-r from-brand-orange-dark via-brand-orange to-brand-orange-light text-white px-4 py-2 rounded-full font-bold shadow-elevation-3">
                   GH₵{room.price.toLocaleString()}<span className="text-xs font-normal">/night</span>
                 </div>
                 
                 {/* Room Type Icon */}
-                <div className="absolute top-4 left-4 w-12 h-12 bg-brand-blue-dark/80 backdrop-blur-sm rounded-full flex items-center justify-center border border-brand-orange/30">
+                <div className="absolute top-4 left-4 w-12 h-12 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-brand-orange/30">
                   <room.icon className="w-6 h-6 text-brand-orange" />
                 </div>
               </div>
@@ -104,14 +104,14 @@ export const AccommodationSection = () => {
               {/* Content */}
               <div className="p-6">
                 <div className="flex items-center justify-between mb-3">
-                  <h3 className="font-display text-brand-sky-light text-2xl">{room.name}</h3>
-                  <div className="flex items-center gap-2 text-brand-sky text-sm">
+                  <h3 className="font-display text-[hsl(var(--section-dark-text))] text-2xl">{room.name}</h3>
+                  <div className="flex items-center gap-2 text-[hsl(var(--section-dark-muted))] text-sm">
                     <Users className="w-4 h-4" />
                     {room.guests}
                   </div>
                 </div>
                 
-                <p className="text-brand-sky/80 mb-6 leading-relaxed">
+                <p className="text-[hsl(var(--section-dark-muted))] mb-6 leading-relaxed">
                   {room.description}
                 </p>
 
@@ -128,11 +128,11 @@ export const AccommodationSection = () => {
                 </div>
 
                 {/* Common Amenities */}
-                <div className="flex items-center gap-4 mb-6 pb-6 border-b border-brand-blue">
+                <div className="flex items-center gap-4 mb-6 pb-6 border-b border-[hsl(var(--section-dark-border))]">
                   {commonAmenities.map((amenity) => (
                     <div
                       key={amenity.name}
-                      className="flex items-center gap-2 text-brand-sky/70 text-sm"
+                      className="flex items-center gap-2 text-[hsl(var(--section-dark-muted))] text-sm"
                     >
                       <amenity.icon className="w-4 h-4" />
                       {amenity.name}
