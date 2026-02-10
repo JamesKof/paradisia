@@ -37,51 +37,61 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-700 ease-out rounded-2xl ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-elevation-4"
-          : "bg-white/90 backdrop-blur-sm"
+          ? "w-[95%] max-w-6xl bg-white/70 backdrop-blur-xl shadow-[0_8px_32px_hsl(217_50%_30%/0.15),0_2px_8px_hsl(217_75%_35%/0.1)] border border-white/40"
+          : "w-[95%] max-w-7xl bg-white/50 backdrop-blur-lg shadow-[0_4px_20px_hsl(217_50%_30%/0.08)] border border-white/30"
       }`}
+      style={{ animation: "floatNavbar 6s ease-in-out infinite" }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+      <div className="px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 lg:h-18">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-3">
-            <img src={logo} alt="Paradasia Hideway" className="h-14 w-auto" />
+          <a
+            href="#home"
+            className="flex items-center gap-3 group transition-transform duration-300 hover:scale-105"
+          >
+            <img
+              src={logo}
+              alt="Paradasia Hideway"
+              className="h-11 w-auto transition-all duration-300 group-hover:drop-shadow-[0_0_12px_hsl(28_92%_54%/0.4)]"
+            />
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-0.5 bg-white/30 backdrop-blur-sm rounded-xl px-1.5 py-1 border border-white/20">
             {navLinks.map((link) =>
               link.isRoute ? (
                 <span
                   key={link.name}
                   onClick={() => navigate(link.href)}
-                  className="px-4 py-2 text-brand-blue hover:text-brand-orange transition-colors duration-300 text-sm font-medium orange-underline cursor-pointer"
+                  className="relative px-4 py-2 text-brand-blue/80 hover:text-brand-orange transition-all duration-300 text-sm font-medium cursor-pointer rounded-lg hover:bg-brand-orange/10 group"
                 >
                   {link.name}
+                  <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-brand-orange rounded-full transition-all duration-300 group-hover:w-3/5" />
                 </span>
               ) : (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="px-4 py-2 text-brand-blue hover:text-brand-orange transition-colors duration-300 text-sm font-medium orange-underline"
+                  className="relative px-4 py-2 text-brand-blue/80 hover:text-brand-orange transition-all duration-300 text-sm font-medium rounded-lg hover:bg-brand-orange/10 group"
                 >
                   {link.name}
+                  <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-brand-orange rounded-full transition-all duration-300 group-hover:w-3/5" />
                 </a>
               )
             )}
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-3">
             {user ? (
               <>
                 {isAdmin && (
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="text-brand-orange hover:text-brand-orange-dark"
+                    className="text-brand-orange hover:text-brand-orange-dark hover:bg-brand-orange/10 rounded-xl transition-all duration-300 hover:scale-105"
                     onClick={() => navigate("/admin")}
                   >
                     <Shield className="w-4 h-4 mr-2" />
@@ -91,7 +101,7 @@ export const Navbar = () => {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="text-brand-blue hover:text-brand-orange"
+                  className="text-brand-blue/70 hover:text-brand-orange hover:bg-brand-orange/10 rounded-xl transition-all duration-300 hover:scale-105"
                   onClick={() => navigate("/profile")}
                 >
                   <User className="w-4 h-4 mr-2" />
@@ -100,7 +110,7 @@ export const Navbar = () => {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="text-brand-blue hover:text-brand-orange"
+                  className="text-brand-blue/70 hover:text-brand-orange hover:bg-brand-orange/10 rounded-xl transition-all duration-300 hover:scale-105"
                   onClick={handleLogout}
                 >
                   <LogOut className="w-4 h-4 mr-2" />
@@ -111,7 +121,7 @@ export const Navbar = () => {
               <Button
                 variant="ghost"
                 size="sm"
-                className="text-brand-blue hover:text-brand-orange"
+                className="text-brand-blue/70 hover:text-brand-orange hover:bg-brand-orange/10 rounded-xl transition-all duration-300 hover:scale-105"
                 onClick={() => navigate("/auth")}
               >
                 <User className="w-4 h-4 mr-2" />
@@ -119,7 +129,11 @@ export const Navbar = () => {
               </Button>
             )}
             <a href="#accommodation">
-              <Button variant="orange" size="default">
+              <Button
+                variant="orange"
+                size="default"
+                className="rounded-xl shadow-[0_4px_15px_hsl(28_92%_54%/0.35)] hover:shadow-[0_6px_25px_hsl(28_92%_54%/0.5)] transition-all duration-300 hover:scale-105 hover:-translate-y-0.5"
+              >
                 Book Now
               </Button>
             </a>
@@ -128,7 +142,7 @@ export const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-brand-blue p-2 hover:bg-brand-blue/10 rounded-lg transition-colors"
+            className="lg:hidden text-brand-blue p-2 hover:bg-brand-orange/10 rounded-xl transition-all duration-300 hover:scale-110"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -136,11 +150,11 @@ export const Navbar = () => {
 
         {/* Mobile Navigation */}
         <div
-          className={`lg:hidden overflow-hidden transition-all duration-500 ${
+          className={`lg:hidden overflow-hidden transition-all duration-500 ease-out ${
             isOpen ? "max-h-[500px] pb-6" : "max-h-0"
           }`}
         >
-          <div className="flex flex-col gap-2 pt-4 border-t border-brand-blue/20">
+          <div className="flex flex-col gap-1 pt-4 border-t border-brand-blue/10">
             {navLinks.map((link) =>
               link.isRoute ? (
                 <span
@@ -149,7 +163,7 @@ export const Navbar = () => {
                     navigate(link.href);
                     setIsOpen(false);
                   }}
-                  className="px-4 py-3 text-brand-blue hover:text-brand-orange hover:bg-brand-orange/10 rounded-lg transition-all duration-300 cursor-pointer"
+                  className="px-4 py-3 text-brand-blue/80 hover:text-brand-orange hover:bg-brand-orange/10 rounded-xl transition-all duration-300 cursor-pointer hover:translate-x-2"
                 >
                   {link.name}
                 </span>
@@ -158,7 +172,7 @@ export const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="px-4 py-3 text-brand-blue hover:text-brand-orange hover:bg-brand-orange/10 rounded-lg transition-all duration-300"
+                  className="px-4 py-3 text-brand-blue/80 hover:text-brand-orange hover:bg-brand-orange/10 rounded-xl transition-all duration-300 hover:translate-x-2"
                 >
                   {link.name}
                 </a>
@@ -168,28 +182,28 @@ export const Navbar = () => {
               {user ? (
                 <>
                   {isAdmin && (
-                    <Button variant="outline" className="w-full text-brand-orange border-brand-orange" onClick={() => navigate("/admin")}>
+                    <Button variant="outline" className="w-full text-brand-orange border-brand-orange rounded-xl" onClick={() => navigate("/admin")}>
                       <Shield className="w-4 h-4 mr-2" />
                       Admin Dashboard
                     </Button>
                   )}
-                  <Button variant="outline" className="w-full text-brand-blue border-brand-blue" onClick={() => navigate("/profile")}>
+                  <Button variant="outline" className="w-full text-brand-blue border-brand-blue/30 rounded-xl" onClick={() => navigate("/profile")}>
                     <User className="w-4 h-4 mr-2" />
                     Profile
                   </Button>
-                  <Button variant="ghost" className="w-full text-brand-blue" onClick={handleLogout}>
+                  <Button variant="ghost" className="w-full text-brand-blue rounded-xl" onClick={handleLogout}>
                     <LogOut className="w-4 h-4 mr-2" />
                     Logout
                   </Button>
                 </>
               ) : (
-                <Button variant="outline" className="w-full text-brand-blue border-brand-blue" onClick={() => navigate("/auth")}>
+                <Button variant="outline" className="w-full text-brand-blue border-brand-blue/30 rounded-xl" onClick={() => navigate("/auth")}>
                   <User className="w-4 h-4 mr-2" />
                   Login
                 </Button>
               )}
               <a href="#accommodation" onClick={() => setIsOpen(false)}>
-                <Button variant="orange" className="w-full">
+                <Button variant="orange" className="w-full rounded-xl">
                   Book Now
                 </Button>
               </a>

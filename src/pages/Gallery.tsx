@@ -17,7 +17,6 @@ import paradasiaSunset2 from "@/assets/paradasia-sunset-2.jpg";
 import paradasiaView from "@/assets/paradasia-view.jpg";
 import paradasiaProperty1 from "@/assets/paradasia-property-1.jpg";
 import paradasiaProperty2 from "@/assets/paradasia-property-2.jpg";
-import paradasiaAerialNight from "@/assets/paradasia-aerial-night.jpg";
 import paradasiaBoatRide from "@/assets/paradasia-boat-ride.jpg";
 import paradasiaWineLagoon from "@/assets/paradasia-wine-lagoon.jpg";
 import paradasiaBonfire from "@/assets/paradasia-bonfire.jpg";
@@ -37,11 +36,6 @@ import roomEnsuite from "@/assets/paradasia-room-ensuite.jpg";
 import presidentialLounge from "@/assets/paradasia-presidential-lounge.jpg";
 import presidentialArt from "@/assets/paradasia-presidential-art.jpg";
 const galleryImages = [{
-  id: 1,
-  src: paradasiaAerialNight,
-  title: "Where the night whispers luxury — Paradasia from above",
-  category: "Night Views"
-}, {
   id: 2,
   src: paradasiaBoatRide,
   title: "Race through paradise — the estuary is your playground",
