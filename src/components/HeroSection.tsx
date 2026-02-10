@@ -1,4 +1,5 @@
-import { Play, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
+import heroBg from "@/assets/paradasia-aerial-night.jpg";
 import { Button } from "@/components/ui/button";
 
 export const HeroSection = () => {
@@ -7,14 +8,12 @@ export const HeroSection = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* YouTube Video Background */}
+      {/* Photo Background */}
       <div className="absolute inset-0 w-full h-full">
-        <iframe
-          className="absolute top-1/2 left-1/2 w-[177.78vh] min-w-full min-h-full -translate-x-1/2 -translate-y-1/2"
-          src="https://www.youtube.com/embed/DJwGD0CZyrk?autoplay=1&mute=1&loop=1&playlist=DJwGD0CZyrk&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
-          title="Paradasia Hideway"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
+        <img
+          src={heroBg}
+          alt="Paradasia Hideway aerial view at night"
+          className="w-full h-full object-cover"
         />
       </div>
       
@@ -49,14 +48,9 @@ export const HeroSection = () => {
           <Button variant="hero" size="xl">
             Book Your Escape
           </Button>
-          <a
-            href="https://youtu.be/DJwGD0CZyrk"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="#about">
             <Button variant="hero-outline" size="xl">
-              <Play className="w-5 h-5 mr-2" />
-              Watch Full Video
+              Explore Paradasia
             </Button>
           </a>
         </div>
@@ -64,7 +58,7 @@ export const HeroSection = () => {
         {/* Scroll Indicator */}
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-float">
           <a
-            href="#shorts"
+            href="#showcase"
             className="flex flex-col items-center gap-2 text-brand-sky hover:text-brand-orange transition-colors"
           >
             <span className="text-xs tracking-widest uppercase">See More</span>
