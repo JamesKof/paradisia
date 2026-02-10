@@ -27,6 +27,15 @@ import paradasiaJetski2 from "@/assets/paradasia-jetski-2.jpg";
 import paradasiaJetski3 from "@/assets/paradasia-jetski-3.jpg";
 import paradasiaFloating1 from "@/assets/paradasia-floating-1.jpg";
 import paradasiaFloating2 from "@/assets/paradasia-floating-2.jpg";
+import presidentialSuite from "@/assets/presidential-suite.jpg";
+import standardRoom from "@/assets/standard-room.jpg";
+import suiteLounge from "@/assets/paradasia-suite-lounge.jpg";
+import suiteBed from "@/assets/paradasia-suite-bed.jpg";
+import suiteLiving from "@/assets/paradasia-suite-living.jpg";
+import roomBed from "@/assets/paradasia-room-bed.jpg";
+import roomEnsuite from "@/assets/paradasia-room-ensuite.jpg";
+import presidentialLounge from "@/assets/paradasia-presidential-lounge.jpg";
+import presidentialArt from "@/assets/paradasia-presidential-art.jpg";
 
 const galleryImages = [
   {
@@ -161,9 +170,63 @@ const galleryImages = [
     title: "Resort Landscape",
     category: "Property",
   },
+  {
+    id: 23,
+    src: presidentialSuite,
+    title: "The Presidential Suite — where African royalty rests",
+    category: "Rooms",
+  },
+  {
+    id: 24,
+    src: standardRoom,
+    title: "Warm elegance in every corner of your island room",
+    category: "Rooms",
+  },
+  {
+    id: 25,
+    src: suiteLounge,
+    title: "Sink into comfort — your private island lounge awaits",
+    category: "Rooms",
+  },
+  {
+    id: 26,
+    src: suiteBed,
+    title: "Handcrafted mahogany beds for nights of pure bliss",
+    category: "Rooms",
+  },
+  {
+    id: 27,
+    src: suiteLiving,
+    title: "Island breezes through sheer curtains — suite life",
+    category: "Rooms",
+  },
+  {
+    id: 28,
+    src: roomBed,
+    title: "Rest easy — nature's lullaby is just outside your window",
+    category: "Rooms",
+  },
+  {
+    id: 29,
+    src: roomEnsuite,
+    title: "Thoughtful details make every stay unforgettable",
+    category: "Rooms",
+  },
+  {
+    id: 30,
+    src: presidentialLounge,
+    title: "Golden evenings in the Presidential lounge",
+    category: "Rooms",
+  },
+  {
+    id: 31,
+    src: presidentialArt,
+    title: "Pan-African art adorns your sanctuary",
+    category: "Rooms",
+  },
 ];
 
-const categories = ["All", "Adventures", "Lifestyle", "Night Views", "Aerial", "Sunset", "Views", "Property", "Amenities"];
+const categories = ["All", "Rooms", "Adventures", "Lifestyle", "Night Views", "Aerial", "Sunset", "Views", "Property", "Amenities"];
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
