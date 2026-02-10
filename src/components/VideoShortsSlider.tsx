@@ -42,15 +42,21 @@ const shorts = [
   },
   {
     id: "short5",
-    videoId: "7551715459763031307",
+    videoId: "7540595798262811909",
     title: "Serenity on the Water",
     thumbnail: paradasiaFloating1,
   },
   {
     id: "short6",
-    videoId: "7559524720882765067",
+    videoId: "7539508487743671557",
     title: "Bonfire Nights",
     thumbnail: paradasiaBonfire,
+  },
+  {
+    id: "short7",
+    videoId: "7537627469097045253",
+    title: "Island Vibes",
+    thumbnail: paradasiaSuiteLounge,
   },
 ];
 
