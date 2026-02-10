@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, User, LogOut, Shield } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { useAuth } from "@/contexts/AuthContext";
 import { useAdmin } from "@/hooks/useAdmin";
 import logo from "@/assets/logo.png";
@@ -39,8 +40,8 @@ export const Navbar = () => {
     <nav
       className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-700 ease-out rounded-2xl ${
         isScrolled
-          ? "w-[95%] max-w-6xl bg-white/70 backdrop-blur-xl shadow-[0_8px_32px_hsl(217_50%_30%/0.15),0_2px_8px_hsl(217_75%_35%/0.1)] border border-white/40"
-          : "w-[95%] max-w-7xl bg-white/50 backdrop-blur-lg shadow-[0_4px_20px_hsl(217_50%_30%/0.08)] border border-white/30"
+          ? "w-[95%] max-w-6xl bg-card/80 backdrop-blur-xl shadow-elevation-4 border border-border/60"
+          : "w-[95%] max-w-7xl bg-card/60 backdrop-blur-lg shadow-elevation-2 border border-border/40"
       }`}
       style={{ animation: "floatNavbar 6s ease-in-out infinite" }}
     >
@@ -59,13 +60,13 @@ export const Navbar = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-0.5 bg-white/30 backdrop-blur-sm rounded-xl px-1.5 py-1 border border-white/20">
+          <div className="hidden lg:flex items-center gap-0.5 bg-muted/40 backdrop-blur-sm rounded-xl px-1.5 py-1 border border-border/30">
             {navLinks.map((link) =>
               link.isRoute ? (
                 <span
                   key={link.name}
                   onClick={() => navigate(link.href)}
-                  className="relative px-4 py-2 text-brand-blue/80 hover:text-brand-orange transition-all duration-300 text-sm font-medium cursor-pointer rounded-lg hover:bg-brand-orange/10 group"
+                  className="relative px-4 py-2 text-foreground/70 hover:text-brand-orange transition-all duration-300 text-sm font-medium cursor-pointer rounded-lg hover:bg-accent/50 group"
                 >
                   {link.name}
                   <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-brand-orange rounded-full transition-all duration-300 group-hover:w-3/5" />
@@ -74,7 +75,7 @@ export const Navbar = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="relative px-4 py-2 text-brand-blue/80 hover:text-brand-orange transition-all duration-300 text-sm font-medium rounded-lg hover:bg-brand-orange/10 group"
+                  className="relative px-4 py-2 text-foreground/70 hover:text-brand-orange transition-all duration-300 text-sm font-medium rounded-lg hover:bg-accent/50 group"
                 >
                   {link.name}
                   <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-brand-orange rounded-full transition-all duration-300 group-hover:w-3/5" />
@@ -84,14 +85,15 @@ export const Navbar = () => {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-2">
+            <ThemeToggle />
             {user ? (
               <>
                 {isAdmin && (
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="text-brand-orange hover:text-brand-orange-dark hover:bg-brand-orange/10 rounded-xl transition-all duration-300 hover:scale-105"
+                    className="text-brand-orange hover:text-brand-orange-dark hover:bg-accent/50 rounded-xl transition-all duration-300 hover:scale-105"
                     onClick={() => navigate("/admin")}
                   >
                     <Shield className="w-4 h-4 mr-2" />
@@ -101,7 +103,7 @@ export const Navbar = () => {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="text-brand-blue/70 hover:text-brand-orange hover:bg-brand-orange/10 rounded-xl transition-all duration-300 hover:scale-105"
+                  className="text-foreground/60 hover:text-brand-orange hover:bg-accent/50 rounded-xl transition-all duration-300 hover:scale-105"
                   onClick={() => navigate("/profile")}
                 >
                   <User className="w-4 h-4 mr-2" />
@@ -110,7 +112,7 @@ export const Navbar = () => {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="text-brand-blue/70 hover:text-brand-orange hover:bg-brand-orange/10 rounded-xl transition-all duration-300 hover:scale-105"
+                  className="text-foreground/60 hover:text-brand-orange hover:bg-accent/50 rounded-xl transition-all duration-300 hover:scale-105"
                   onClick={handleLogout}
                 >
                   <LogOut className="w-4 h-4 mr-2" />
@@ -121,7 +123,7 @@ export const Navbar = () => {
               <Button
                 variant="ghost"
                 size="sm"
-                className="text-brand-blue/70 hover:text-brand-orange hover:bg-brand-orange/10 rounded-xl transition-all duration-300 hover:scale-105"
+                className="text-foreground/60 hover:text-brand-orange hover:bg-accent/50 rounded-xl transition-all duration-300 hover:scale-105"
                 onClick={() => navigate("/auth")}
               >
                 <User className="w-4 h-4 mr-2" />
@@ -140,12 +142,15 @@ export const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-brand-blue p-2 hover:bg-brand-orange/10 rounded-xl transition-all duration-300 hover:scale-110"
-          >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="flex items-center gap-2 lg:hidden">
+            <ThemeToggle />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-foreground p-2 hover:bg-accent/50 rounded-xl transition-all duration-300 hover:scale-110"
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -154,7 +159,7 @@ export const Navbar = () => {
             isOpen ? "max-h-[500px] pb-6" : "max-h-0"
           }`}
         >
-          <div className="flex flex-col gap-1 pt-4 border-t border-brand-blue/10">
+          <div className="flex flex-col gap-1 pt-4 border-t border-border/30">
             {navLinks.map((link) =>
               link.isRoute ? (
                 <span
@@ -163,7 +168,7 @@ export const Navbar = () => {
                     navigate(link.href);
                     setIsOpen(false);
                   }}
-                  className="px-4 py-3 text-brand-blue/80 hover:text-brand-orange hover:bg-brand-orange/10 rounded-xl transition-all duration-300 cursor-pointer hover:translate-x-2"
+                  className="px-4 py-3 text-foreground/70 hover:text-brand-orange hover:bg-accent/50 rounded-xl transition-all duration-300 cursor-pointer hover:translate-x-2"
                 >
                   {link.name}
                 </span>
@@ -172,7 +177,7 @@ export const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="px-4 py-3 text-brand-blue/80 hover:text-brand-orange hover:bg-brand-orange/10 rounded-xl transition-all duration-300 hover:translate-x-2"
+                  className="px-4 py-3 text-foreground/70 hover:text-brand-orange hover:bg-accent/50 rounded-xl transition-all duration-300 hover:translate-x-2"
                 >
                   {link.name}
                 </a>
@@ -187,17 +192,17 @@ export const Navbar = () => {
                       Admin Dashboard
                     </Button>
                   )}
-                  <Button variant="outline" className="w-full text-brand-blue border-brand-blue/30 rounded-xl" onClick={() => navigate("/profile")}>
+                  <Button variant="outline" className="w-full rounded-xl" onClick={() => navigate("/profile")}>
                     <User className="w-4 h-4 mr-2" />
                     Profile
                   </Button>
-                  <Button variant="ghost" className="w-full text-brand-blue rounded-xl" onClick={handleLogout}>
+                  <Button variant="ghost" className="w-full rounded-xl" onClick={handleLogout}>
                     <LogOut className="w-4 h-4 mr-2" />
                     Logout
                   </Button>
                 </>
               ) : (
-                <Button variant="outline" className="w-full text-brand-blue border-brand-blue/30 rounded-xl" onClick={() => navigate("/auth")}>
+                <Button variant="outline" className="w-full rounded-xl" onClick={() => navigate("/auth")}>
                   <User className="w-4 h-4 mr-2" />
                   Login
                 </Button>

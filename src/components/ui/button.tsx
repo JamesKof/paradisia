@@ -28,7 +28,7 @@ const buttonVariants = cva(
         hero:
           "bg-gradient-to-r from-brand-orange-dark via-brand-orange to-brand-orange-light text-brand-blue-dark font-bold shadow-elevation-4 hover:shadow-elevation-6 hover:shadow-orange-glow hover:-translate-y-1 active:translate-y-0 text-base",
         "hero-outline":
-          "border-2 border-brand-sky bg-brand-blue-dark/50 text-brand-sky-light backdrop-blur-sm hover:bg-brand-orange/20 hover:border-brand-orange shadow-elevation-3 hover:shadow-elevation-5",
+          "border-2 border-white/40 bg-white/10 text-white backdrop-blur-sm hover:bg-brand-orange/20 hover:border-brand-orange shadow-elevation-3 hover:shadow-elevation-5",
       },
       size: {
         default: "h-11 px-6 py-2",
