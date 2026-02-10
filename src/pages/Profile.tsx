@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { User, Calendar, ArrowLeft, LogOut, Star, Edit2, X } from "lucide-react";
+import { User, Calendar, ArrowLeft, LogOut, Star, Edit2, X, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
@@ -9,6 +9,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import logo from "@/assets/logo.png";
 import { getRoomDisplayName } from "@/lib/roomTypes";
+import { BookingBenefits } from "@/components/BookingBenefits";
 
 interface ProfileData {
   id: string;
@@ -54,6 +55,7 @@ const Profile = () => {
   const [reviewDialogOpen, setReviewDialogOpen] = useState(false);
   const [reviewData, setReviewData] = useState({ rating: 5, comment: "", bookingId: "" });
   const [isLoadingProfile, setIsLoadingProfile] = useState(true);
+  const [expandedBooking, setExpandedBooking] = useState<string | null>(null);
 
   useEffect(() => { if (!loading && !user) navigate("/auth"); }, [user, loading, navigate]);
 
@@ -272,6 +274,24 @@ const Profile = () => {
 
                     {booking.special_requests && (
                       <div className="mb-4"><p className="text-muted-foreground text-sm">Special Requests</p><p className="text-foreground text-sm">{booking.special_requests}</p></div>
+                    )}
+
+                    {/* Benefits & Instructions Toggle */}
+                    <button
+                      onClick={() => setExpandedBooking(expandedBooking === booking.id ? null : booking.id)}
+                      className="flex items-center gap-2 text-brand-orange text-sm font-medium hover:underline mb-2"
+                    >
+                      {expandedBooking === booking.id ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                      {expandedBooking === booking.id ? "Hide Details" : "View Benefits & Instructions"}
+                    </button>
+
+                    {expandedBooking === booking.id && (
+                      <BookingBenefits
+                        roomType={booking.room_type}
+                        checkIn={booking.check_in}
+                        checkOut={booking.check_out}
+                        bookingStatus={booking.booking_status}
+                      />
                     )}
 
                     {/* Review */}

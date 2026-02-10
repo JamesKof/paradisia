@@ -86,6 +86,48 @@ const Admin = () => {
   useEffect(() => {
     if (isAdmin) {
       fetchData();
+
+      // Real-time subscription for new bookings
+      const channel = supabase
+        .channel("admin-bookings")
+        .on(
+          "postgres_changes",
+          { event: "INSERT", schema: "public", table: "bookings" },
+          (payload) => {
+            const newBooking = payload.new as Booking;
+            setBookings((prev) => [newBooking, ...prev]);
+            setAnalytics((prev) => ({
+              ...prev,
+              totalBookings: prev.totalBookings + 1,
+              pendingBookings: prev.pendingBookings + 1,
+            }));
+            toast({
+              title: "🔔 New Booking Received!",
+              description: `${newBooking.first_name} ${newBooking.last_name} — ${getRoomDisplayName(newBooking.room_type)}`,
+            });
+          }
+        )
+        .on(
+          "postgres_changes",
+          { event: "INSERT", schema: "public", table: "guest_inquiries" },
+          (payload) => {
+            const newInquiry = payload.new as Inquiry;
+            setInquiries((prev) => [newInquiry, ...prev]);
+            setAnalytics((prev) => ({
+              ...prev,
+              newInquiries: prev.newInquiries + 1,
+            }));
+            toast({
+              title: "📩 New Inquiry!",
+              description: `${newInquiry.name} — ${newInquiry.subject}`,
+            });
+          }
+        )
+        .subscribe();
+
+      return () => {
+        supabase.removeChannel(channel);
+      };
     }
   }, [isAdmin]);
 
