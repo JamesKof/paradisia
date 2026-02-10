@@ -46,18 +46,18 @@ export const ExploreSection = () => {
         </div>
 
         {/* Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-16">
           {/* Images */}
           <div className="relative">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="relative rounded-2xl overflow-hidden shadow-elevation-4 h-[350px]">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4">
+              <div className="relative rounded-2xl overflow-hidden shadow-elevation-4 h-[220px] sm:h-[300px] lg:h-[350px]">
                 <img
                   src={paradasiaJetski1}
                   alt="Speed through palm-lined waterways — adventure starts here at Paradasia"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
               </div>
-              <div className="relative rounded-2xl overflow-hidden shadow-elevation-4 h-[350px] mt-8">
+              <div className="relative rounded-2xl overflow-hidden shadow-elevation-4 h-[220px] sm:h-[300px] lg:h-[350px] mt-6 sm:mt-8">
                 <img
                   src={paradasiaFloating1}
                   alt="Drift into serenity on the gentle waters of Big Ada"
@@ -67,8 +67,8 @@ export const ExploreSection = () => {
             </div>
             
             {/* Decorative Element */}
-            <div className="absolute -bottom-4 -left-4 w-32 h-32 border-2 border-brand-blue/20 rounded-full -z-10" />
-            <div className="absolute -top-4 -right-4 w-24 h-24 bg-brand-orange/10 rounded-full -z-10" />
+            <div className="absolute -bottom-4 -left-4 w-32 h-32 border-2 border-brand-blue/20 rounded-full -z-10 hidden sm:block" />
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-brand-orange/10 rounded-full -z-10 hidden sm:block" />
           </div>
 
           {/* Experiences */}

@@ -75,14 +75,14 @@ export const AccommodationSection = () => {
         </div>
 
         {/* Rooms Grid */}
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
           {rooms.map((room) => (
             <div
               key={room.id}
               className="group relative bg-brand-blue-light rounded-2xl overflow-hidden border border-brand-blue hover:border-brand-orange/30 transition-all duration-500 shadow-elevation-4 hover:shadow-elevation-6"
             >
               {/* Image */}
-              <div className="relative h-72 overflow-hidden">
+              <div className="relative h-52 sm:h-64 lg:h-72 overflow-hidden">
                 <img
                   src={room.image}
                   alt={room.name}
