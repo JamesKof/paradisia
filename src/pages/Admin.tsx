@@ -12,6 +12,7 @@ import { useAdmin } from "@/hooks/useAdmin";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import logo from "@/assets/logo.png";
+import { getRoomDisplayName } from "@/lib/roomTypes";
 
 interface Booking {
   id: string;
@@ -19,7 +20,7 @@ interface Booking {
   first_name: string;
   last_name: string;
   phone: string | null;
-  room_type: "presidential" | "standard";
+  room_type: string;
   room_price: number;
   check_in: string;
   check_out: string;
@@ -368,7 +369,7 @@ const Admin = () => {
                         </td>
                         <td className="px-4 py-3">
                           <p className="text-brand-sky-light capitalize">
-                            {booking.room_type === "presidential" ? "Presidential Suite" : "Standard Room"}
+                            {getRoomDisplayName(booking.room_type)}
                           </p>
                         </td>
                         <td className="px-4 py-3">
@@ -523,7 +524,7 @@ const Admin = () => {
                 <div>
                   <p className="text-brand-sky/70 text-sm">Room</p>
                   <p className="text-brand-sky-light capitalize">
-                    {selectedBooking.room_type === "presidential" ? "Presidential Suite" : "Standard Room"}
+                    {getRoomDisplayName(selectedBooking.room_type)}
                   </p>
                 </div>
                 <div>

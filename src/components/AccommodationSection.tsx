@@ -1,30 +1,42 @@
 import { useState } from "react";
-import { Crown, Users, Bed, Wifi, Wind, Coffee } from "lucide-react";
+import { Home, Building2, Castle, Users, Wifi, Wind, Coffee } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BookingModal } from "@/components/BookingModal";
+import { ROOM_PRICING } from "@/lib/roomTypes";
 import presidentialSuite from "@/assets/presidential-suite.jpg";
 import standardRoom from "@/assets/standard-room.jpg";
+import paradasiaView from "@/assets/paradasia-view.jpg";
 
 const rooms = [
   {
-    id: "presidential",
-    name: "Presidential Suite",
-    price: 5000,
-    image: presidentialSuite,
-    description: "The epitome of luxury with panoramic ocean views, private balcony, and exclusive amenities for an unforgettable stay.",
-    features: ["King Canopy Bed", "Ocean View Balcony", "Private Butler", "Premium Minibar"],
-    guests: "2-4 Guests",
-    icon: Crown,
+    id: "cabin" as const,
+    name: "Cabin (Standalone)",
+    pricing: ROOM_PRICING.cabin,
+    image: standardRoom,
+    description: "A cosy standalone cabin nestled in lush island greenery — perfect for a peaceful solo or couples retreat.",
+    features: ["Private Cabin", "Garden Setting", "En-suite Bathroom", "Room Service"],
+    guests: "2 Guests",
+    icon: Home,
   },
   {
-    id: "standard",
-    name: "Standard Room",
-    price: 3000,
-    image: standardRoom,
-    description: "Elegant comfort with all essential amenities, perfect for couples seeking a romantic island getaway.",
-    features: ["Queen Bed", "Garden/Ocean View", "En-suite Bathroom", "Room Service"],
-    guests: "2 Guests",
-    icon: Bed,
+    id: "villa" as const,
+    name: "Villa – 2 Bedroom",
+    pricing: ROOM_PRICING.villa,
+    image: presidentialSuite,
+    description: "A spacious 2-bedroom villa with kitchen and hall — ideal for families or small groups seeking comfort and privacy.",
+    features: ["2 Bedrooms", "Full Kitchen", "Living Hall", "Private Balcony"],
+    guests: "2-6 Guests",
+    icon: Building2,
+  },
+  {
+    id: "full_property" as const,
+    name: "Full Property Buyout",
+    pricing: ROOM_PRICING.full_property,
+    image: paradasiaView,
+    description: "Exclusive access to the entire 3-bedroom property — the ultimate private island experience for larger groups and events.",
+    features: ["3 Bedrooms", "Entire Property", "Private Chef Option", "Event Space"],
+    guests: "2-10 Guests",
+    icon: Castle,
   },
 ] as const;
 
@@ -37,14 +49,12 @@ const commonAmenities = [
 export const AccommodationSection = () => {
   const [bookingModal, setBookingModal] = useState<{
     isOpen: boolean;
-    roomType: "presidential" | "standard";
+    roomType: "cabin" | "villa" | "full_property";
     roomName: string;
-    price: number;
   }>({
     isOpen: false,
-    roomType: "presidential",
+    roomType: "cabin",
     roomName: "",
-    price: 0,
   });
 
   const openBookingModal = (room: typeof rooms[number]) => {
@@ -52,7 +62,6 @@ export const AccommodationSection = () => {
       isOpen: true,
       roomType: room.id,
       roomName: room.name,
-      price: room.price,
     });
   };
 
@@ -75,14 +84,14 @@ export const AccommodationSection = () => {
         </div>
 
         {/* Rooms Grid */}
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
           {rooms.map((room) => (
             <div
               key={room.id}
               className="group relative section-dark-card rounded-2xl overflow-hidden border transition-all duration-500 shadow-elevation-4 hover:shadow-elevation-6 hover:border-brand-orange/30"
             >
               {/* Image */}
-              <div className="relative h-52 sm:h-64 lg:h-72 overflow-hidden">
+              <div className="relative h-52 sm:h-56 lg:h-64 overflow-hidden">
                 <img
                   src={room.image}
                   alt={room.name}
@@ -91,8 +100,9 @@ export const AccommodationSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
                 
                 {/* Price Badge */}
-                <div className="absolute top-4 right-4 bg-gradient-to-r from-brand-orange-dark via-brand-orange to-brand-orange-light text-white px-4 py-2 rounded-full font-bold shadow-elevation-3">
-                  GH₵{room.price.toLocaleString()}<span className="text-xs font-normal">/night</span>
+                <div className="absolute top-4 right-4 bg-gradient-to-r from-brand-orange-dark via-brand-orange to-brand-orange-light text-white px-3 py-2 rounded-full font-bold shadow-elevation-3 text-sm">
+                  <span className="block">GH₵{room.pricing.weekday.toLocaleString()}</span>
+                  <span className="text-[10px] font-normal opacity-80">weekday/night</span>
                 </div>
                 
                 {/* Room Type Icon */}
@@ -102,25 +112,37 @@ export const AccommodationSection = () => {
               </div>
 
               {/* Content */}
-              <div className="p-6">
+              <div className="p-5">
                 <div className="flex items-center justify-between mb-3">
-                  <h3 className="font-display text-[hsl(var(--section-dark-text))] text-2xl">{room.name}</h3>
-                  <div className="flex items-center gap-2 text-[hsl(var(--section-dark-muted))] text-sm">
-                    <Users className="w-4 h-4" />
+                  <h3 className="font-display text-[hsl(var(--section-dark-text))] text-xl">{room.name}</h3>
+                  <div className="flex items-center gap-1 text-[hsl(var(--section-dark-muted))] text-xs">
+                    <Users className="w-3.5 h-3.5" />
                     {room.guests}
                   </div>
                 </div>
                 
-                <p className="text-[hsl(var(--section-dark-muted))] mb-6 leading-relaxed">
+                <p className="text-[hsl(var(--section-dark-muted))] mb-4 leading-relaxed text-sm">
                   {room.description}
                 </p>
 
+                {/* Pricing breakdown */}
+                <div className="flex gap-3 mb-4 text-xs">
+                  <div className="flex-1 bg-brand-orange/10 rounded-lg p-2 text-center border border-brand-orange/20">
+                    <p className="text-brand-orange font-bold">GH₵{room.pricing.weekday.toLocaleString()}</p>
+                    <p className="text-[hsl(var(--section-dark-muted))]">Weekday</p>
+                  </div>
+                  <div className="flex-1 bg-brand-orange/10 rounded-lg p-2 text-center border border-brand-orange/20">
+                    <p className="text-brand-orange font-bold">GH₵{room.pricing.weekend.toLocaleString()}</p>
+                    <p className="text-[hsl(var(--section-dark-muted))]">Weekend</p>
+                  </div>
+                </div>
+
                 {/* Features */}
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="flex flex-wrap gap-2 mb-4">
                   {room.features.map((feature) => (
                     <span
                       key={feature}
-                      className="px-3 py-1 bg-brand-orange/10 text-brand-orange text-xs rounded-full border border-brand-orange/20"
+                      className="px-2.5 py-1 bg-brand-orange/10 text-brand-orange text-xs rounded-full border border-brand-orange/20"
                     >
                       {feature}
                     </span>
@@ -128,13 +150,13 @@ export const AccommodationSection = () => {
                 </div>
 
                 {/* Common Amenities */}
-                <div className="flex items-center gap-4 mb-6 pb-6 border-b border-[hsl(var(--section-dark-border))]">
+                <div className="flex items-center gap-3 mb-5 pb-5 border-b border-[hsl(var(--section-dark-border))]">
                   {commonAmenities.map((amenity) => (
                     <div
                       key={amenity.name}
-                      className="flex items-center gap-2 text-[hsl(var(--section-dark-muted))] text-sm"
+                      className="flex items-center gap-1.5 text-[hsl(var(--section-dark-muted))] text-xs"
                     >
-                      <amenity.icon className="w-4 h-4" />
+                      <amenity.icon className="w-3.5 h-3.5" />
                       {amenity.name}
                     </div>
                   ))}
@@ -142,7 +164,7 @@ export const AccommodationSection = () => {
 
                 {/* CTA */}
                 <Button variant="orange" className="w-full" onClick={() => openBookingModal(room)}>
-                  Book {room.name}
+                  Book Now
                 </Button>
               </div>
             </div>
@@ -156,7 +178,6 @@ export const AccommodationSection = () => {
         onClose={() => setBookingModal((prev) => ({ ...prev, isOpen: false }))}
         roomType={bookingModal.roomType}
         roomName={bookingModal.roomName}
-        pricePerNight={bookingModal.price}
       />
     </section>
   );

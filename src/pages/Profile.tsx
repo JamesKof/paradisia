@@ -8,6 +8,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import logo from "@/assets/logo.png";
+import { getRoomDisplayName } from "@/lib/roomTypes";
 
 interface ProfileData {
   id: string;
@@ -19,7 +20,7 @@ interface ProfileData {
 
 interface Booking {
   id: string;
-  room_type: "presidential" | "standard";
+  room_type: string;
   room_price: number;
   check_in: string;
   check_out: string;
@@ -252,7 +253,7 @@ const Profile = () => {
                     <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
                       <div>
                         <h3 className="font-display text-lg text-foreground capitalize">
-                          {booking.room_type === "presidential" ? "Presidential Suite" : "Standard Room"}
+                          {getRoomDisplayName(booking.room_type)}
                         </h3>
                         <p className="text-muted-foreground text-sm">Booked on {formatDate(booking.created_at)}</p>
                       </div>
