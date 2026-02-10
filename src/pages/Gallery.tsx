@@ -17,10 +17,8 @@ import paradasiaSunset2 from "@/assets/paradasia-sunset-2.jpg";
 import paradasiaView from "@/assets/paradasia-view.jpg";
 import paradasiaProperty1 from "@/assets/paradasia-property-1.jpg";
 import paradasiaProperty2 from "@/assets/paradasia-property-2.jpg";
-import paradasiaBoatRide from "@/assets/paradasia-boat-ride.jpg";
 import paradasiaWineLagoon from "@/assets/paradasia-wine-lagoon.jpg";
 import paradasiaBonfire from "@/assets/paradasia-bonfire.jpg";
-import paradasiaDawnCruise from "@/assets/paradasia-dawn-cruise.jpg";
 import paradasiaJetski1 from "@/assets/paradasia-jetski-1.jpg";
 import paradasiaJetski2 from "@/assets/paradasia-jetski-2.jpg";
 import paradasiaJetski3 from "@/assets/paradasia-jetski-3.jpg";
@@ -36,11 +34,6 @@ import roomEnsuite from "@/assets/paradasia-room-ensuite.jpg";
 import presidentialLounge from "@/assets/paradasia-presidential-lounge.jpg";
 import presidentialArt from "@/assets/paradasia-presidential-art.jpg";
 const galleryImages = [{
-  id: 2,
-  src: paradasiaBoatRide,
-  title: "Race through paradise — the estuary is your playground",
-  category: "Adventures"
-}, {
   id: 3,
   src: paradasiaWineLagoon,
   title: "Sip, breathe, and let the lagoon tell its story",
@@ -50,11 +43,6 @@ const galleryImages = [{
   src: paradasiaBonfire,
   title: "Let the bonfire light your soul under swaying palms",
   category: "Night Views"
-}, {
-  id: 5,
-  src: paradasiaDawnCruise,
-  title: "First light on golden waters — mornings made for explorers",
-  category: "Adventures"
 }, {
   id: 6,
   src: paradasiaJetski1,

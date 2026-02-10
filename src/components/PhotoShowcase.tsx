@@ -1,12 +1,12 @@
-import paradasiaBoatRide from "@/assets/paradasia-boat-ride.jpg";
 import paradasiaFloating1 from "@/assets/paradasia-floating-1.jpg";
 import paradasiaJetski1 from "@/assets/paradasia-jetski-1.jpg";
 import paradasiaBonfire from "@/assets/paradasia-bonfire.jpg";
 import paradasiaSuiteLounge from "@/assets/paradasia-suite-lounge.jpg";
 import paradasiaPresidentialArt from "@/assets/paradasia-presidential-art.jpg";
+import paradasiaWineLagoon from "@/assets/paradasia-wine-lagoon.jpg";
 
 const photos = [
-  { src: paradasiaBoatRide, title: "Race through paradise on golden waters", span: "col-span-2 row-span-2" },
+  { src: paradasiaWineLagoon, title: "Sip, breathe, and let the lagoon tell its story", span: "col-span-2 row-span-2" },
   { src: paradasiaSuiteLounge, title: "Luxury interiors crafted for island living", span: "" },
   { src: paradasiaBonfire, title: "Nights lit by fire and African sky", span: "" },
   { src: paradasiaJetski1, title: "Unleash your wild side on Big Ada's estuary", span: "" },
