@@ -12,14 +12,14 @@ const contactInfo = [
 ];
 
 const socialLinks = [
-  { icon: Instagram, href: "https://www.instagram.com/paradiasiahideway", label: "Instagram" },
+  { icon: Instagram, href: "https://www.instagram.com/paradasiahideway/", label: "Instagram" },
   {
     icon: () => (
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
       </svg>
     ),
-    href: "https://www.tiktok.com/@paradiasiahideway",
+    href: "https://www.tiktok.com/@paradasia.hideway",
     label: "TikTok",
   },
   {
@@ -28,8 +28,8 @@ const socialLinks = [
         <path d="M2.27 7.28a3.15 3.15 0 0 1 2.5-1.22c.98 0 1.87.46 2.5 1.22L12 13.2l4.73-5.92a3.15 3.15 0 0 1 2.5-1.22c.98 0 1.87.46 2.5 1.22A4.15 4.15 0 0 1 22.7 10v4.5c0 2.9-2.13 5.44-5 5.44a4.93 4.93 0 0 1-3.5-1.5L12 16l-2.2 2.44a4.93 4.93 0 0 1-3.5 1.5c-2.87 0-5-2.54-5-5.44V10c0-1.06.36-2.04.97-2.72z" />
       </svg>
     ),
-    href: "https://www.booking.com/hotel/gh/serene-stay-at-paradasia-hideaway.html",
-    label: "Booking.com",
+    href: "https://www.airbnb.com/l/vOuKCkfk",
+    label: "Airbnb",
   },
 ];
 
@@ -197,7 +197,7 @@ export const ContactSection = () => {
 
             <div className="flex items-center justify-center gap-4">
               {socialLinks.map((social) => (
-                <a key={social.label} href={social.href} className="w-12 h-12 rounded-full bg-brand-orange/10 hover:bg-brand-orange/20 flex items-center justify-center text-brand-orange transition-all duration-300 hover:scale-110" aria-label={social.label}>
+                <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-brand-orange/10 hover:bg-brand-orange/20 flex items-center justify-center text-brand-orange transition-all duration-300 hover:scale-110" aria-label={social.label}>
                   <social.icon className="w-5 h-5" />
                 </a>
               ))}
