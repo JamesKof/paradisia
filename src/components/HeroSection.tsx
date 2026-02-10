@@ -3,10 +3,10 @@ import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroRoom from "@/assets/paradasia-suite-living.jpg";
 import heroAdventure from "@/assets/paradasia-jetski-1.jpg";
-import heroView from "@/assets/paradasia-view.jpg";
+import heroView from "@/assets/paradasia-sunset-1.jpg";
 
 const slides = [
-  { src: heroView, alt: "Paradasia river view at sunset" },
+  { src: heroView, alt: "Paradasia sunset over the water" },
   { src: heroRoom, alt: "Paradasia luxury suite living room" },
   { src: heroAdventure, alt: "Jet ski adventure at Paradasia" },
 ];
