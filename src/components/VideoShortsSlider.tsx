@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Play, X } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import paradasiaCover from "@/assets/paradasia-cover.jpg";
-import paradasiaAerial1 from "@/assets/paradasia-aerial-1.jpg";
-import paradasiaAerial2 from "@/assets/paradasia-aerial-2.jpg";
-import paradasiaSunset1 from "@/assets/paradasia-sunset-1.jpg";
-import paradasiaSunset2 from "@/assets/paradasia-sunset-2.jpg";
-import paradasiaNight from "@/assets/paradasia-night-1.jpg";
+import paradasiaWineLagoon from "@/assets/paradasia-wine-lagoon.jpg";
+import paradasiaJetski1 from "@/assets/paradasia-jetski-1.jpg";
+import paradasiaFloating1 from "@/assets/paradasia-floating-1.jpg";
+import paradasiaBonfire from "@/assets/paradasia-bonfire.jpg";
+import paradasiaSuiteLounge from "@/assets/paradasia-suite-lounge.jpg";
+import paradasiaView from "@/assets/paradasia-view.jpg";
 
 // Paradasia Hideway video content with real property images
 const shorts = [
@@ -14,37 +14,37 @@ const shorts = [
     id: "short1",
     videoId: "DJwGD0CZyrk",
     title: "Paradise Awaits at Paradasia Hideway",
-    thumbnail: paradasiaCover,
+    thumbnail: paradasiaWineLagoon,
   },
   {
     id: "short2",
     videoId: "DJwGD0CZyrk",
-    title: "Aerial Views of Big Ada",
-    thumbnail: paradasiaAerial1,
+    title: "Panoramic Views of Big Ada",
+    thumbnail: paradasiaView,
   },
   {
     id: "short3",
     videoId: "DJwGD0CZyrk",
     title: "Luxury Island Living in Ghana",
-    thumbnail: paradasiaAerial2,
+    thumbnail: paradasiaSuiteLounge,
   },
   {
     id: "short4",
     videoId: "DJwGD0CZyrk",
-    title: "Romantic Sunset Moments",
-    thumbnail: paradasiaSunset1,
+    title: "Thrilling Jetski Adventures",
+    thumbnail: paradasiaJetski1,
   },
   {
     id: "short5",
     videoId: "DJwGD0CZyrk",
-    title: "Golden Hour at Paradasia",
-    thumbnail: paradasiaSunset2,
+    title: "Serenity on the Water",
+    thumbnail: paradasiaFloating1,
   },
   {
     id: "short6",
     videoId: "DJwGD0CZyrk",
-    title: "Night Ambiance",
-    thumbnail: paradasiaNight,
+    title: "Bonfire Nights",
+    thumbnail: paradasiaBonfire,
   },
 ];
 

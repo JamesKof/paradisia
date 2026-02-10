@@ -4,19 +4,8 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 
-// Import all Paradasia images
-import paradasiaCover from "@/assets/paradasia-cover.jpg";
-import paradasiaAerial1 from "@/assets/paradasia-aerial-1.jpg";
-import paradasiaAerial2 from "@/assets/paradasia-aerial-2.jpg";
-import paradasiaAerial3 from "@/assets/paradasia-aerial-3.jpg";
-import paradasiaPool from "@/assets/paradasia-pool.jpg";
-import paradasiaNight1 from "@/assets/paradasia-night-1.jpg";
-import paradasiaNight2 from "@/assets/paradasia-night-2.jpg";
-import paradasiaSunset1 from "@/assets/paradasia-sunset-1.jpg";
-import paradasiaSunset2 from "@/assets/paradasia-sunset-2.jpg";
+// Import Paradasia images
 import paradasiaView from "@/assets/paradasia-view.jpg";
-import paradasiaProperty1 from "@/assets/paradasia-property-1.jpg";
-import paradasiaProperty2 from "@/assets/paradasia-property-2.jpg";
 import paradasiaWineLagoon from "@/assets/paradasia-wine-lagoon.jpg";
 import paradasiaBonfire from "@/assets/paradasia-bonfire.jpg";
 import paradasiaJetski1 from "@/assets/paradasia-jetski-1.jpg";
@@ -33,7 +22,6 @@ import roomBed from "@/assets/paradasia-room-bed.jpg";
 import roomEnsuite from "@/assets/paradasia-room-ensuite.jpg";
 import presidentialLounge from "@/assets/paradasia-presidential-lounge.jpg";
 import presidentialArt from "@/assets/paradasia-presidential-art.jpg";
-
 const galleryImages = [
   { id: 3, src: paradasiaWineLagoon, title: "Sip, breathe, and let the lagoon tell its story", category: "Lifestyle" },
   { id: 4, src: paradasiaBonfire, title: "Let the bonfire light your soul under swaying palms", category: "Night Views" },
@@ -42,18 +30,7 @@ const galleryImages = [
   { id: 8, src: paradasiaJetski3, title: "Feel the breeze, own the moment", category: "Adventures" },
   { id: 9, src: paradasiaFloating1, title: "Drift into serenity — the water holds you here", category: "Lifestyle" },
   { id: 10, src: paradasiaFloating2, title: "Surrender to nature's embrace at Paradasia", category: "Lifestyle" },
-  { id: 11, src: paradasiaCover, title: "Paradasia Hideway — your island sanctuary", category: "Night Views" },
-  { id: 12, src: paradasiaAerial1, title: "Aerial View of Big Ada", category: "Aerial" },
-  { id: 13, src: paradasiaAerial2, title: "Resort from Above", category: "Aerial" },
-  { id: 14, src: paradasiaAerial3, title: "Island Paradise", category: "Aerial" },
-  { id: 15, src: paradasiaPool, title: "Luxury Pool Area", category: "Amenities" },
-  { id: 16, src: paradasiaNight1, title: "Evening Ambiance", category: "Night Views" },
-  { id: 17, src: paradasiaNight2, title: "Nighttime Serenity", category: "Night Views" },
-  { id: 18, src: paradasiaSunset1, title: "Golden Hour at Paradasia", category: "Sunset" },
-  { id: 19, src: paradasiaSunset2, title: "Sunset over Big Ada", category: "Sunset" },
   { id: 20, src: paradasiaView, title: "Panoramic Vista", category: "Views" },
-  { id: 21, src: paradasiaProperty1, title: "Property Grounds", category: "Property" },
-  { id: 22, src: paradasiaProperty2, title: "Resort Landscape", category: "Property" },
   { id: 23, src: presidentialSuite, title: "The Presidential Suite — where African royalty rests", category: "Rooms" },
   { id: 24, src: standardRoom, title: "Warm elegance in every corner of your island room", category: "Rooms" },
   { id: 25, src: suiteLounge, title: "Sink into comfort — your private island lounge awaits", category: "Rooms" },
@@ -65,7 +42,7 @@ const galleryImages = [
   { id: 31, src: presidentialArt, title: "Pan-African art adorns your sanctuary", category: "Rooms" },
 ];
 
-const categories = ["All", "Rooms", "Adventures", "Lifestyle", "Night Views", "Aerial", "Sunset", "Views", "Property", "Amenities"];
+const categories = ["All", "Rooms", "Adventures", "Lifestyle", "Night Views", "Views"];
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
