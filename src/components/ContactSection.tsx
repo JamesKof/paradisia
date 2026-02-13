@@ -6,7 +6,7 @@ import { useToast } from "@/hooks/use-toast";
 import { contactFormSchema, type ContactFormData } from "@/lib/validations";
 
 const contactInfo = [
-  { icon: MapPin, label: "Location", value: "Big Ada Island, near Aqua Safari", subtext: "Greater Accra Region, Ghana" },
+  { icon: MapPin, label: "Location", value: "Big Ada Island, Near Aqua Safari", subtext: "Greater Accra Region, Ghana" },
   { icon: Phone, label: "Phone", value: "+233 558 391 399", subtext: "+233 503 364 928" },
   { icon: Mail, label: "Email", value: "info@paradasiahideway.com", subtext: "We respond within 24 hours" },
 ];
