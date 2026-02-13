@@ -78,12 +78,14 @@
     --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(30 20% 98%));
     --gradient-sunset: linear-gradient(135deg, hsl(28 92% 54%), hsl(35 100% 60%), hsl(45 100% 70%));
 
-    /* Dark section bg — used for accommodation, contact, footer */
-    --section-dark-bg: 0 0% 14%;
-    --section-dark-text: 30 20% 92%;
-    --section-dark-muted: 0 0% 55%;
-    --section-dark-card: 0 0% 20%;
-    --section-dark-border: 0 0% 25%;
+    /* Dark section bg — #3F54A6 blue gradient */
+    --section-dark-bg: 226 45% 45%;
+    --section-dark-bg-light: 226 45% 55%;
+    --section-dark-bg-dark: 226 50% 32%;
+    --section-dark-text: 0 0% 95%;
+    --section-dark-muted: 226 20% 72%;
+    --section-dark-card: 226 45% 38%;
+    --section-dark-border: 226 35% 50%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 0 0% 26%;
@@ -134,12 +136,14 @@
     --input: 0 0% 24%;
     --ring: 28 92% 54%;
 
-    /* Section darks — deeper gray from logo palette */
-    --section-dark-bg: 0 0% 8%;
-    --section-dark-text: 0 0% 92%;
-    --section-dark-muted: 0 0% 61%;
-    --section-dark-card: 0 0% 13%;
-    --section-dark-border: 0 0% 20%;
+    /* Section darks — #3F54A6 blue gradient (darker for dark mode) */
+    --section-dark-bg: 226 50% 28%;
+    --section-dark-bg-light: 226 45% 38%;
+    --section-dark-bg-dark: 226 55% 20%;
+    --section-dark-text: 0 0% 95%;
+    --section-dark-muted: 226 20% 68%;
+    --section-dark-card: 226 50% 22%;
+    --section-dark-border: 226 40% 35%;
 
     /* Neutral shadows */
     --shadow-1: 0 1px 3px hsl(0 0% 8% / 0.3), 0 1px 2px hsl(0 0% 8% / 0.2);
@@ -234,9 +238,9 @@
     @apply py-24 px-4 md:px-8 lg:px-16;
   }
 
-  /* Dark sections — accommodation, contact, footer */
+  /* Dark sections — #3F54A6 blue gradient */
   .section-dark {
-    background: hsl(var(--section-dark-bg));
+    background: linear-gradient(135deg, hsl(var(--section-dark-bg-dark)), hsl(var(--section-dark-bg)), hsl(var(--section-dark-bg-light)));
     color: hsl(var(--section-dark-text));
   }
 
