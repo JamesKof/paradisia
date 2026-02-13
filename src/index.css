@@ -6,53 +6,53 @@
 
 @layer base {
   :root {
-    /* Brand Colors from Logo */
-    --brand-blue: 0 0% 40%;
-    --brand-blue-light: 0 0% 55%;
-    --brand-blue-dark: 0 0% 18%;
-    --brand-blue-muted: 0 0% 55%;
+    /* Brand Colors from Logo — Orange & Gray */
+    --brand-blue: 0 0% 61%;
+    --brand-blue-light: 0 0% 72%;
+    --brand-blue-dark: 0 0% 25%;
+    --brand-blue-muted: 0 0% 61%;
     
-    /* Sunset Orange - Accent (sun) */
+    /* Sunset Orange - Primary Accent (from logo) */
     --brand-orange: 28 92% 54%;
     --brand-orange-light: 28 95% 65%;
     --brand-orange-dark: 28 90% 45%;
     
-    /* Sky Blue - Secondary */
-    --brand-sky: 0 0% 55%;
-    --brand-sky-light: 0 0% 75%;
+    /* Logo Gray - Secondary (#9C9B9C ≈ 0° 0% 61%) */
+    --brand-sky: 0 0% 61%;
+    --brand-sky-light: 0 0% 78%;
     
-    /* Ocean Teal */
-    --ocean: 0 0% 45%;
-    --ocean-light: 0 0% 70%;
-    --ocean-dark: 0 0% 30%;
+    /* Gray tones from logo */
+    --ocean: 0 0% 61%;
+    --ocean-light: 0 0% 78%;
+    --ocean-dark: 0 0% 40%;
     
-    /* Base colors — warm white, balanced */
-    --background: 30 20% 98%;
-    --foreground: 0 0% 20%;
+    /* Light mode — clean white with gray undertones */
+    --background: 0 0% 99%;
+    --foreground: 0 0% 18%;
     
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 20%;
+    --card-foreground: 0 0% 18%;
     
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 20%;
+    --popover-foreground: 0 0% 18%;
     
     --primary: 28 92% 54%;
     --primary-foreground: 0 0% 100%;
     
-    --secondary: 30 15% 93%;
-    --secondary-foreground: 0 0% 20%;
+    --secondary: 0 0% 94%;
+    --secondary-foreground: 0 0% 18%;
     
-    --muted: 30 10% 93%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 50%;
     
-    --accent: 28 80% 92%;
+    --accent: 28 80% 93%;
     --accent-foreground: 28 90% 35%;
     
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     
-    --border: 30 15% 88%;
-    --input: 30 15% 88%;
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
     --ring: 28 92% 54%;
     
     --radius: 0.75rem;
@@ -96,49 +96,50 @@
   }
 
   .dark {
-    --brand-blue: 0 0% 60%;
-    --brand-blue-light: 0 0% 70%;
-    --brand-blue-dark: 0 0% 16%;
-    --brand-blue-muted: 0 0% 55%;
+    /* Dark mode uses logo gray (#9C9B9C) as base tone */
+    --brand-blue: 0 0% 68%;
+    --brand-blue-light: 0 0% 78%;
+    --brand-blue-dark: 0 0% 14%;
+    --brand-blue-muted: 0 0% 61%;
     
-    --brand-sky: 0 0% 68%;
-    --brand-sky-light: 0 0% 82%;
+    --brand-sky: 0 0% 72%;
+    --brand-sky-light: 0 0% 85%;
 
-    /* Neutral gray base */
-    --background: 0 0% 14%;
+    /* Dark base derived from logo gray darkened */
+    --background: 0 0% 12%;
     --foreground: 0 0% 95%;
     
-    --card: 0 0% 18%;
+    --card: 0 0% 16%;
     --card-foreground: 0 0% 95%;
     
-    --popover: 0 0% 18%;
+    --popover: 0 0% 16%;
     --popover-foreground: 0 0% 95%;
     
     --primary: 28 92% 54%;
     --primary-foreground: 0 0% 100%;
     
-    --secondary: 0 0% 22%;
+    --secondary: 0 0% 20%;
     --secondary-foreground: 0 0% 92%;
     
-    --muted: 0 0% 20%;
-    --muted-foreground: 0 0% 65%;
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 61%;
     
-    --accent: 0 0% 25%;
+    --accent: 0 0% 22%;
     --accent-foreground: 28 92% 65%;
     
     --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 100%;
     
-    --border: 0 0% 26%;
-    --input: 0 0% 26%;
+    --border: 0 0% 24%;
+    --input: 0 0% 24%;
     --ring: 28 92% 54%;
 
-    /* Neutral gray section darks */
-    --section-dark-bg: 0 0% 10%;
+    /* Section darks — deeper gray from logo palette */
+    --section-dark-bg: 0 0% 8%;
     --section-dark-text: 0 0% 92%;
-    --section-dark-muted: 0 0% 55%;
-    --section-dark-card: 0 0% 15%;
-    --section-dark-border: 0 0% 22%;
+    --section-dark-muted: 0 0% 61%;
+    --section-dark-card: 0 0% 13%;
+    --section-dark-border: 0 0% 20%;
 
     /* Neutral shadows */
     --shadow-1: 0 1px 3px hsl(0 0% 8% / 0.3), 0 1px 2px hsl(0 0% 8% / 0.2);

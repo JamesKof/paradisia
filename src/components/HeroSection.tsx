@@ -91,7 +91,7 @@ export const HeroSection = () => {
         <div className="animate-fade-in-up animation-delay-300">
           <div className="inline-block px-4 sm:px-8 py-3 sm:py-4 rounded-2xl bg-black/25 backdrop-blur-lg border border-white/10 mb-8 sm:mb-10">
             <p className="text-sm sm:text-base lg:text-lg text-white/60 max-w-2xl mx-auto">
-              Your exclusive island sanctuary near Aqua Safari — where Pan-African luxury meets aquatic serenity.
+              Your exclusive island sanctuary Near Aqua Safari — where Pan-African luxury meets aquatic serenity.
             </p>
           </div>
         </div>
