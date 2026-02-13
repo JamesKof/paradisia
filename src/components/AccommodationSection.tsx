@@ -3,9 +3,10 @@ import { Home, Building2, Castle, Users, Wifi, Wind, Coffee, Eye } from "lucide-
 import { Button } from "@/components/ui/button";
 import { BookingModal } from "@/components/BookingModal";
 import { CabinDetailModal } from "@/components/CabinDetailModal";
+import { VillaDetailModal } from "@/components/VillaDetailModal";
 import { ROOM_PRICING } from "@/lib/roomTypes";
 import cabinBed from "@/assets/cabin-interior-bed.jpg";
-import presidentialSuite from "@/assets/presidential-suite.jpg";
+import villaLiving from "@/assets/villa-living-room.jpg";
 import roomBed from "@/assets/paradasia-room-bed.jpg";
 
 const rooms = [
@@ -24,12 +25,12 @@ const rooms = [
     id: "villa" as const,
     name: "Villa – 2 Bedroom",
     pricing: ROOM_PRICING.villa,
-    image: presidentialSuite,
-    description: "A spacious 2-bedroom villa with kitchen and hall — ideal for families or small groups seeking comfort and privacy.",
+    image: villaLiving,
+    description: "A luxurious 2-bedroom villa with open-plan living, original African artwork, en-suite bathrooms, and plush interiors — ideal for families or groups seeking space and elegance.",
     features: ["2 Bedrooms", "Full Kitchen", "Living Hall", "Private Balcony"],
     guests: "2-6 Guests",
     icon: Building2,
-    hasDetailView: false,
+    hasDetailView: true,
   },
   {
     id: "full_property" as const,
@@ -52,6 +53,7 @@ const commonAmenities = [
 
 export const AccommodationSection = () => {
   const [cabinDetailOpen, setCabinDetailOpen] = useState(false);
+  const [villaDetailOpen, setVillaDetailOpen] = useState(false);
   const [bookingModal, setBookingModal] = useState<{
     isOpen: boolean;
     roomType: "cabin" | "villa" | "full_property";
@@ -173,7 +175,10 @@ export const AccommodationSection = () => {
                     <Button
                       variant="outline"
                       className="flex-1 border-brand-orange/30 text-brand-orange hover:bg-brand-orange/10"
-                      onClick={() => setCabinDetailOpen(true)}
+                      onClick={() => {
+                        if (room.id === "cabin") setCabinDetailOpen(true);
+                        else if (room.id === "villa") setVillaDetailOpen(true);
+                      }}
                     >
                       <Eye className="w-4 h-4 mr-1.5" />
                       View Interior
@@ -196,6 +201,16 @@ export const AccommodationSection = () => {
         onBookNow={() => {
           setCabinDetailOpen(false);
           openBookingModal(rooms[0]);
+        }}
+      />
+
+      {/* Villa Detail Modal */}
+      <VillaDetailModal
+        isOpen={villaDetailOpen}
+        onClose={() => setVillaDetailOpen(false)}
+        onBookNow={() => {
+          setVillaDetailOpen(false);
+          openBookingModal(rooms[1]);
         }}
       />
 
