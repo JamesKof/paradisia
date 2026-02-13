@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Home, Building2, Castle, Users, Wifi, Wind, Coffee } from "lucide-react";
+import { Home, Building2, Castle, Users, Wifi, Wind, Coffee, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BookingModal } from "@/components/BookingModal";
+import { CabinDetailModal } from "@/components/CabinDetailModal";
 import { ROOM_PRICING } from "@/lib/roomTypes";
+import cabinBed from "@/assets/cabin-interior-bed.jpg";
 import presidentialSuite from "@/assets/presidential-suite.jpg";
-import standardRoom from "@/assets/standard-room.jpg";
 import roomBed from "@/assets/paradasia-room-bed.jpg";
 
 const rooms = [
@@ -12,9 +13,10 @@ const rooms = [
     id: "cabin" as const,
     name: "Cabin (Standalone)",
     pricing: ROOM_PRICING.cabin,
-    image: standardRoom,
-    description: "A cosy standalone cabin nestled in lush island greenery — perfect for a peaceful solo or couples retreat.",
-    features: ["Private Cabin", "Garden Setting", "En-suite Bathroom", "Room Service"],
+    image: cabinBed,
+    description: "A beautifully appointed private cabin with handcrafted mahogany bed, open-plan living area, flat-screen TV, and warm hardwood floors — your intimate island sanctuary.",
+    features: ["King-Size Bed", "Living Area", "Mini Fridge", "Air Conditioning"],
+    hasDetailView: true,
     guests: "2 Guests",
     icon: Home,
   },
@@ -27,6 +29,7 @@ const rooms = [
     features: ["2 Bedrooms", "Full Kitchen", "Living Hall", "Private Balcony"],
     guests: "2-6 Guests",
     icon: Building2,
+    hasDetailView: false,
   },
   {
     id: "full_property" as const,
@@ -37,6 +40,7 @@ const rooms = [
     features: ["3 Bedrooms", "Entire Property", "Private Chef Option", "Event Space"],
     guests: "2-10 Guests",
     icon: Castle,
+    hasDetailView: false,
   },
 ] as const;
 
@@ -47,6 +51,7 @@ const commonAmenities = [
 ];
 
 export const AccommodationSection = () => {
+  const [cabinDetailOpen, setCabinDetailOpen] = useState(false);
   const [bookingModal, setBookingModal] = useState<{
     isOpen: boolean;
     roomType: "cabin" | "villa" | "full_property";
@@ -163,14 +168,36 @@ export const AccommodationSection = () => {
                 </div>
 
                 {/* CTA */}
-                <Button variant="orange" className="w-full" onClick={() => openBookingModal(room)}>
-                  Book Now
-                </Button>
+                <div className="flex gap-2">
+                  {room.hasDetailView && (
+                    <Button
+                      variant="outline"
+                      className="flex-1 border-brand-orange/30 text-brand-orange hover:bg-brand-orange/10"
+                      onClick={() => setCabinDetailOpen(true)}
+                    >
+                      <Eye className="w-4 h-4 mr-1.5" />
+                      View Interior
+                    </Button>
+                  )}
+                  <Button variant="orange" className={room.hasDetailView ? "flex-1" : "w-full"} onClick={() => openBookingModal(room)}>
+                    Book Now
+                  </Button>
+                </div>
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Cabin Detail Modal */}
+      <CabinDetailModal
+        isOpen={cabinDetailOpen}
+        onClose={() => setCabinDetailOpen(false)}
+        onBookNow={() => {
+          setCabinDetailOpen(false);
+          openBookingModal(rooms[0]);
+        }}
+      />
 
       {/* Booking Modal */}
       <BookingModal
