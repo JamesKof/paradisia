@@ -42,7 +42,7 @@ export const VillaDetailModal = ({ isOpen, onClose, onBookNow }: VillaDetailModa
               src={img.src}
               alt={img.alt}
               className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
-                i === currentSlide ? "opacity-100" : "opacity-0"
+                i === currentSlide ? "opacity-100 animate-panoramic" : "opacity-0"
               }`}
             />
           ))}
