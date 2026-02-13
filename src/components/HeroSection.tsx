@@ -4,11 +4,13 @@ import { Button } from "@/components/ui/button";
 import heroRoom from "@/assets/paradasia-suite-living.jpg";
 import heroAdventure from "@/assets/paradasia-jetski-1.jpg";
 import heroView from "@/assets/paradasia-sunset-1.jpg";
+import heroNight from "@/assets/paradasia-aerial-night.jpg";
 
 const slides = [
   { src: heroView, alt: "Paradasia sunset over the water" },
   { src: heroRoom, alt: "Paradasia luxury suite living room" },
   { src: heroAdventure, alt: "Jet ski adventure at Paradasia" },
+  { src: heroNight, alt: "Paradasia aerial night view" },
 ];
 
 export const HeroSection = () => {
