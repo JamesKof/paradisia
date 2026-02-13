@@ -33,6 +33,18 @@ import property1 from "@/assets/paradasia-property-1.jpg";
 import pool from "@/assets/paradasia-pool.jpg";
 import dawnCruise from "@/assets/paradasia-dawn-cruise.jpg";
 
+// Culture & Art imports
+import totemsGroup from "@/assets/paradasia-totems-group.jpg";
+import obelisk from "@/assets/paradasia-obelisk.jpg";
+import guardianStatue from "@/assets/paradasia-guardian-statue.jpg";
+import totemDetail from "@/assets/paradasia-totem-detail.jpg";
+import wireArt from "@/assets/paradasia-wire-art.jpg";
+import bambooTunnel from "@/assets/paradasia-bamboo-tunnel.jpg";
+import clayWall from "@/assets/paradasia-clay-wall.jpg";
+import clayBust from "@/assets/paradasia-clay-bust.jpg";
+import headSculptures from "@/assets/paradasia-head-sculptures.jpg";
+import boundFigures from "@/assets/paradasia-bound-figures.jpg";
+
 const galleryImages = [
   { id: 3, src: paradasiaWineLagoon, title: "Sip, breathe, and let the lagoon tell its story", category: "Lifestyle" },
   { id: 4, src: paradasiaBonfire, title: "Let the bonfire light your soul under swaying palms", category: "Night Views" },
@@ -61,9 +73,21 @@ const galleryImages = [
   { id: 39, src: property1, title: "Lush island pathways to your sanctuary", category: "Views" },
   { id: 40, src: pool, title: "Dream deeply in cloud-white comfort", category: "Rooms" },
   { id: 41, src: dawnCruise, title: "Your private speedboat awaits on the shore", category: "Adventures" },
+
+  // Culture & Art
+  { id: 50, src: totemsGroup, title: "Ancient totems stand guard — storytellers carved in stone", category: "Culture & Art" },
+  { id: 51, src: obelisk, title: "A sacred obelisk etched with centuries of tradition", category: "Culture & Art" },
+  { id: 52, src: guardianStatue, title: "The Guardian rises — where art meets ancestral spirit", category: "Culture & Art" },
+  { id: 53, src: totemDetail, title: "Every carving tells a tale of the Volta people", category: "Culture & Art" },
+  { id: 54, src: wireArt, title: "Wireframe wildlife leaps across rustic walls", category: "Culture & Art" },
+  { id: 55, src: bambooTunnel, title: "Walk through the bamboo cathedral — nature's own gallery", category: "Culture & Art" },
+  { id: 56, src: clayWall, title: "A hundred faces whisper from the earth", category: "Culture & Art" },
+  { id: 57, src: clayBust, title: "Hand-sculpted clay portraits rooted in the soil", category: "Culture & Art" },
+  { id: 58, src: headSculptures, title: "An open-air museum of human expression", category: "Culture & Art" },
+  { id: 59, src: boundFigures, title: "Art that remembers — powerful sculptures beneath the baobab", category: "Culture & Art" },
 ];
 
-const categories = ["All", "Rooms", "Adventures", "Lifestyle", "Night Views", "Views"];
+const categories = ["All", "Rooms", "Adventures", "Lifestyle", "Culture & Art", "Night Views", "Views"];
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
