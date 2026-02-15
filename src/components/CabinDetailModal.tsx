@@ -3,12 +3,18 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
+// Interior
 import cabinLounge from "@/assets/cabin-interior-lounge.jpg";
 import cabinLiving from "@/assets/cabin-interior-living.jpg";
 import cabinBedroom from "@/assets/cabin-interior-bedroom.jpg";
 import cabinWide from "@/assets/cabin-interior-wide.jpg";
 import cabinFan from "@/assets/cabin-interior-fan.jpg";
 import cabinBed from "@/assets/cabin-interior-bed.jpg";
+
+// Exterior / surroundings
+import pool from "@/assets/paradasia-pool.jpg";
+import property1 from "@/assets/paradasia-property-1.jpg";
+import bambooPath from "@/assets/paradasia-bamboo-path.jpg";
 
 const cabinImages = [
   { src: cabinBed, alt: "Handcrafted mahogany bed with crisp white linens" },
@@ -17,6 +23,9 @@ const cabinImages = [
   { src: cabinWide, alt: "Wide view of the cabin interior" },
   { src: cabinFan, alt: "Cabin lounge with ceiling fan and natural light" },
   { src: cabinLounge, alt: "Cosy lounge with flat-screen TV" },
+  { src: property1, alt: "Cabin exterior amid tropical gardens" },
+  { src: pool, alt: "Pool area steps from the cabin" },
+  { src: bambooPath, alt: "Garden path leading to the cabin" },
 ];
 
 interface CabinDetailModalProps {
@@ -33,9 +42,9 @@ export const CabinDetailModal = ({ isOpen, onClose, onBookNow }: CabinDetailModa
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-3xl p-0 overflow-hidden bg-card border-border">
+      <DialogContent className="max-w-3xl max-h-[90vh] p-0 overflow-y-auto bg-card border-border">
         {/* Image Slider */}
-        <div className="relative h-[300px] sm:h-[400px] overflow-hidden">
+        <div className="relative h-[250px] sm:h-[320px] overflow-hidden flex-shrink-0">
           {cabinImages.map((img, i) => (
             <img
               key={i}
@@ -48,7 +57,6 @@ export const CabinDetailModal = ({ isOpen, onClose, onBookNow }: CabinDetailModa
           ))}
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
 
-          {/* Nav Arrows */}
           <button
             onClick={goToPrevious}
             className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm text-white hover:bg-brand-orange transition-colors flex items-center justify-center"
@@ -62,7 +70,6 @@ export const CabinDetailModal = ({ isOpen, onClose, onBookNow }: CabinDetailModa
             <ChevronRight className="w-5 h-5" />
           </button>
 
-          {/* Minimal line indicators */}
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1">
             {cabinImages.map((_, i) => (
               <button
@@ -75,7 +82,6 @@ export const CabinDetailModal = ({ isOpen, onClose, onBookNow }: CabinDetailModa
             ))}
           </div>
 
-          {/* Close */}
           <button
             onClick={onClose}
             className="absolute top-3 right-3 w-9 h-9 rounded-full bg-black/40 backdrop-blur-sm text-white hover:bg-brand-orange transition-colors flex items-center justify-center"
@@ -85,15 +91,14 @@ export const CabinDetailModal = ({ isOpen, onClose, onBookNow }: CabinDetailModa
         </div>
 
         {/* Content */}
-        <div className="p-6 space-y-4">
+        <div className="p-5 space-y-3">
           <h2 className="font-display text-2xl text-foreground">Cabin (Standalone)</h2>
-          <p className="text-muted-foreground leading-relaxed">
+          <p className="text-muted-foreground leading-relaxed text-sm">
             Retreat to your own private sanctuary — a beautifully appointed standalone cabin set amidst lush tropical
             greenery on Paradasia Island. Featuring warm hardwood floors, a handcrafted mahogany king-size bed dressed
             in crisp white linens, and a stylish open-plan living area with plush seating, flat-screen TV, mini fridge,
-            and complimentary refreshment station. Floor-to-ceiling sheer curtains bathe the space in soft natural light,
-            while air conditioning and a ceiling fan keep you perfectly comfortable. The ideal escape for couples or solo
-            travellers seeking intimacy, peace, and island elegance.
+            and complimentary refreshment station. The ideal escape for couples or solo travellers seeking intimacy,
+            peace, and island elegance.
           </p>
 
           {/* Thumbnail strip */}
@@ -102,7 +107,7 @@ export const CabinDetailModal = ({ isOpen, onClose, onBookNow }: CabinDetailModa
               <button
                 key={i}
                 onClick={() => setCurrentSlide(i)}
-                className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${
+                className={`flex-shrink-0 w-12 h-12 rounded-lg overflow-hidden border-2 transition-all ${
                   i === currentSlide ? "border-brand-orange" : "border-transparent opacity-60 hover:opacity-100"
                 }`}
               >

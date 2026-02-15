@@ -3,14 +3,11 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
-// Exterior / property shots
-import aerial1 from "@/assets/paradasia-aerial-1.jpg";
-import aerial2 from "@/assets/paradasia-aerial-2.jpg";
-import aerial3 from "@/assets/paradasia-aerial-3.jpg";
+// Property shots (remaining)
 import property1 from "@/assets/paradasia-property-1.jpg";
-import property2 from "@/assets/paradasia-property-2.jpg";
 import pool from "@/assets/paradasia-pool.jpg";
-import view from "@/assets/paradasia-view.jpg";
+import nightView from "@/assets/paradasia-night-1.jpg";
+import sunset from "@/assets/paradasia-sunset-1.jpg";
 
 // Interior highlights from cabin & villa
 import cabinBed from "@/assets/cabin-interior-bed.jpg";
@@ -21,13 +18,10 @@ import villaLounge from "@/assets/villa-lounge.jpg";
 import roomBed from "@/assets/paradasia-room-bed.jpg";
 
 const propertyImages = [
-  { src: aerial1, alt: "Aerial view of the full Paradasia property" },
   { src: property1, alt: "Paradasia property exterior with tropical gardens" },
   { src: pool, alt: "Resort pool surrounded by lush greenery" },
-  { src: view, alt: "Panoramic views from the property" },
-  { src: aerial2, alt: "Aerial view showing the coastline" },
-  { src: property2, alt: "Property grounds and walkways" },
-  { src: aerial3, alt: "Bird's eye view of the entire island retreat" },
+  { src: sunset, alt: "Stunning sunset over the island retreat" },
+  { src: nightView, alt: "Paradasia at night with ambient lighting" },
   { src: villaLiving, alt: "Villa living room — included in full buyout" },
   { src: villaBedroom1, alt: "Villa master bedroom — included in full buyout" },
   { src: villaLounge, alt: "Villa lounge area — included in full buyout" },
@@ -50,9 +44,9 @@ export const FullPropertyDetailModal = ({ isOpen, onClose, onBookNow }: FullProp
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-3xl p-0 overflow-hidden bg-card border-border">
+      <DialogContent className="max-w-3xl max-h-[90vh] p-0 overflow-y-auto bg-card border-border">
         {/* Image Slider */}
-        <div className="relative h-[300px] sm:h-[400px] overflow-hidden">
+        <div className="relative h-[250px] sm:h-[320px] overflow-hidden flex-shrink-0">
           {propertyImages.map((img, i) => (
             <img
               key={i}
@@ -78,7 +72,6 @@ export const FullPropertyDetailModal = ({ isOpen, onClose, onBookNow }: FullProp
             <ChevronRight className="w-5 h-5" />
           </button>
 
-          {/* Minimal line indicators instead of dots */}
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1">
             {propertyImages.map((_, i) => (
               <button
@@ -100,15 +93,14 @@ export const FullPropertyDetailModal = ({ isOpen, onClose, onBookNow }: FullProp
         </div>
 
         {/* Content */}
-        <div className="p-6 space-y-4">
+        <div className="p-5 space-y-3">
           <h2 className="font-display text-2xl text-foreground">Full Property Buyout</h2>
-          <p className="text-muted-foreground leading-relaxed">
-            Take over the entire Paradasia Hideway for the ultimate private experience. This exclusive buyout includes 
+          <p className="text-muted-foreground leading-relaxed text-sm">
+            Take over the entire Paradasia Hideaway for the ultimate private experience. This exclusive buyout includes 
             the standalone cabin, the luxurious 2-bedroom villa, and the elegant standard room — a total of three distinct 
             accommodations sleeping up to 10 guests. Enjoy unrestricted access to the private pool, waterfront lounge, 
             bonfire pit, and all resort amenities. Perfect for destination weddings, milestone celebrations, corporate 
-            retreats, or simply claiming an entire island paradise as your own. A dedicated team and optional private 
-            chef ensure every detail is flawless.
+            retreats, or simply claiming an entire island paradise as your own.
           </p>
 
           {/* Thumbnail strip */}
@@ -117,7 +109,7 @@ export const FullPropertyDetailModal = ({ isOpen, onClose, onBookNow }: FullProp
               <button
                 key={i}
                 onClick={() => setCurrentSlide(i)}
-                className={`flex-shrink-0 w-14 h-14 rounded-lg overflow-hidden border-2 transition-all ${
+                className={`flex-shrink-0 w-12 h-12 rounded-lg overflow-hidden border-2 transition-all ${
                   i === currentSlide ? "border-brand-orange" : "border-transparent opacity-60 hover:opacity-100"
                 }`}
               >
