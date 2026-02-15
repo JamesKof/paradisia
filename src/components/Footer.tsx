@@ -13,11 +13,11 @@ export const Footer = () => {
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
-            <a href="#about" className="text-[hsl(var(--section-dark-muted))] hover:text-brand-orange transition-colors">About</a>
-            <a href="#accommodation" className="text-[hsl(var(--section-dark-muted))] hover:text-brand-orange transition-colors">Rooms</a>
-            <a href="#amenities" className="text-[hsl(var(--section-dark-muted))] hover:text-brand-orange transition-colors">Amenities</a>
-            <a href="#contact" className="text-[hsl(var(--section-dark-muted))] hover:text-brand-orange transition-colors">Contact</a>
-            <a href="#" className="text-[hsl(var(--section-dark-muted))] hover:text-brand-orange transition-colors">Privacy Policy</a>
+            <a href="/#about" className="text-[hsl(var(--section-dark-muted))] hover:text-brand-orange transition-colors">About</a>
+            <a href="/#accommodation" className="text-[hsl(var(--section-dark-muted))] hover:text-brand-orange transition-colors">Rooms</a>
+            <a href="/#amenities" className="text-[hsl(var(--section-dark-muted))] hover:text-brand-orange transition-colors">Amenities</a>
+            <a href="/#contact" className="text-[hsl(var(--section-dark-muted))] hover:text-brand-orange transition-colors">Contact</a>
+            <a href="/gallery" className="text-[hsl(var(--section-dark-muted))] hover:text-brand-orange transition-colors">Gallery</a>
           </div>
 
           <div className="flex items-center gap-2 text-[hsl(var(--section-dark-muted))] text-sm">
