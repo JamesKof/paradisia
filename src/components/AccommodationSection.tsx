@@ -97,7 +97,7 @@ export const AccommodationSection = () => {
           {rooms.map((room) => (
             <div
               key={room.id}
-              className="group relative section-dark-card rounded-2xl overflow-hidden border transition-all duration-500 shadow-elevation-4 hover:shadow-elevation-6 hover:border-brand-orange/30"
+              className="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-md transition-all duration-700 ease-out shadow-elevation-4 hover:shadow-elevation-6 hover:border-brand-orange/30 hover:-translate-y-1 hover:bg-white/[0.08]"
             >
               {/* Image */}
               <div className="relative h-52 sm:h-56 lg:h-64 overflow-hidden">

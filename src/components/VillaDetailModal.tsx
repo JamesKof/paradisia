@@ -3,12 +3,18 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
+// Interior
 import villaLiving from "@/assets/villa-living-room.jpg";
 import villaLounge from "@/assets/villa-lounge.jpg";
 import villaBedroom1 from "@/assets/villa-bedroom-1.jpg";
 import villaBedroom2 from "@/assets/villa-bedroom-2.jpg";
 import villaBedroom3 from "@/assets/villa-bedroom-3.jpg";
 import villaEnsuite from "@/assets/villa-ensuite.jpg";
+
+// Exterior / surroundings
+import pool from "@/assets/paradasia-pool.jpg";
+import property1 from "@/assets/paradasia-property-1.jpg";
+import sunset from "@/assets/paradasia-sunset-1.jpg";
 
 const villaImages = [
   { src: villaLiving, alt: "Elegant living room with African art and plush seating" },
@@ -17,6 +23,9 @@ const villaImages = [
   { src: villaBedroom2, alt: "Spacious second bedroom with natural light" },
   { src: villaBedroom3, alt: "Bedroom with en-suite bathroom access and wardrobe" },
   { src: villaEnsuite, alt: "En-suite bathroom with artisan mirror and wooden accents" },
+  { src: property1, alt: "Villa exterior surrounded by tropical gardens" },
+  { src: pool, alt: "Private pool just steps from the villa" },
+  { src: sunset, alt: "Sunset views from the villa grounds" },
 ];
 
 interface VillaDetailModalProps {
@@ -33,9 +42,9 @@ export const VillaDetailModal = ({ isOpen, onClose, onBookNow }: VillaDetailModa
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-3xl p-0 overflow-hidden bg-card border-border">
+      <DialogContent className="max-w-3xl max-h-[90vh] p-0 overflow-y-auto bg-card border-border">
         {/* Image Slider */}
-        <div className="relative h-[300px] sm:h-[400px] overflow-hidden">
+        <div className="relative h-[250px] sm:h-[320px] overflow-hidden flex-shrink-0">
           {villaImages.map((img, i) => (
             <img
               key={i}
@@ -82,17 +91,15 @@ export const VillaDetailModal = ({ isOpen, onClose, onBookNow }: VillaDetailModa
         </div>
 
         {/* Content */}
-        <div className="p-6 space-y-4">
+        <div className="p-5 space-y-3">
           <h2 className="font-display text-2xl text-foreground">Villa – 2 Bedroom</h2>
-          <p className="text-muted-foreground leading-relaxed">
+          <p className="text-muted-foreground leading-relaxed text-sm">
             Step into a world of refined island living — the Paradasia 2-Bedroom Villa is a masterfully designed retreat
             where contemporary luxury meets warm Pan-African artistry. Two generously appointed bedrooms feature king-size
-            beds dressed in premium linens, recessed ambient lighting, built-in wardrobes, and private en-suite bathrooms
-            with artisan-crafted mirrors and stone-finish basins. The heart of the villa is a stunning open-plan living
-            hall adorned with original African artwork, plush velvet seating, a chevron-patterned rug, and a
-            flat-screen entertainment centre — perfect for unwinding after a day of island adventures. Floor-to-ceiling
-            curtains frame tropical garden views, while air conditioning and ceiling fans ensure effortless comfort. Ideal
-            for families, couples travelling together, or small groups seeking space, privacy, and an unforgettable stay.
+            beds dressed in premium linens, recessed ambient lighting, and private en-suite bathrooms. The heart of the
+            villa is a stunning open-plan living hall adorned with original African artwork, plush velvet seating, and a
+            flat-screen entertainment centre. Ideal for families, couples travelling together, or small groups seeking
+            space, privacy, and an unforgettable stay.
           </p>
 
           {/* Thumbnail strip */}
@@ -101,7 +108,7 @@ export const VillaDetailModal = ({ isOpen, onClose, onBookNow }: VillaDetailModa
               <button
                 key={i}
                 onClick={() => setCurrentSlide(i)}
-                className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${
+                className={`flex-shrink-0 w-12 h-12 rounded-lg overflow-hidden border-2 transition-all ${
                   i === currentSlide ? "border-brand-orange" : "border-transparent opacity-60 hover:opacity-100"
                 }`}
               >
