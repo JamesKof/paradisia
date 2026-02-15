@@ -20,9 +20,15 @@ export const Footer = () => {
             <a href="/gallery" className="text-[hsl(var(--section-dark-muted))] hover:text-brand-orange transition-colors">Gallery</a>
           </div>
 
-          <div className="flex items-center gap-2 text-[hsl(var(--section-dark-muted))] text-sm">
-            <span>© {currentYear} Paradasia Hideway</span>
-            <Heart className="w-4 h-4 text-brand-orange fill-brand-orange" />
+          <div className="flex flex-col items-center md:items-end gap-1 text-[hsl(var(--section-dark-muted))] text-sm">
+            <div className="flex items-center gap-2">
+              <span>© {currentYear} Paradasia Hideway</span>
+              <Heart className="w-4 h-4 text-brand-orange fill-brand-orange" />
+            </div>
+            <span>
+              Powered by{" "}
+              <a href="http://www.gotechpluz.com/" target="_blank" rel="noopener noreferrer" className="text-brand-orange hover:underline">Gotechpluz</a>
+            </span>
           </div>
         </div>
       </div>
