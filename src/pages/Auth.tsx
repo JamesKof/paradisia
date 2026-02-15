@@ -44,14 +44,16 @@ const Auth = () => {
   const [lastName, setLastName] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [pageReady, setPageReady] = useState(false);
   
-  const { signIn, signUp, user } = useAuth();
+  const { signIn, signUp, user, loading: authLoading } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
 
   useEffect(() => {
-    if (user) navigate("/");
-  }, [user, navigate]);
+    if (!authLoading && user) navigate("/");
+    if (!authLoading) setPageReady(true);
+  }, [user, navigate, authLoading]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -85,6 +87,31 @@ const Auth = () => {
       setIsLoading(false);
     }
   };
+
+  if (!pageReady) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center p-4">
+        <div className="w-full max-w-md">
+          <div className="bg-card rounded-2xl p-8 border border-border shadow-elevation-5 space-y-6 animate-pulse">
+            <div className="flex justify-center"><div className="h-20 w-20 bg-muted rounded-full" /></div>
+            <div className="space-y-2">
+              <div className="h-6 bg-muted rounded w-2/3 mx-auto" />
+              <div className="h-4 bg-muted rounded w-3/4 mx-auto" />
+            </div>
+            <div className="h-12 bg-muted rounded-lg" />
+            <div className="h-px bg-border" />
+            <div className="space-y-4">
+              <div className="h-4 bg-muted rounded w-1/4" />
+              <div className="h-12 bg-muted rounded-lg" />
+              <div className="h-4 bg-muted rounded w-1/4" />
+              <div className="h-12 bg-muted rounded-lg" />
+            </div>
+            <div className="h-12 bg-muted rounded-lg" />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
