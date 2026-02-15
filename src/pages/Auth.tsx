@@ -5,7 +5,36 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
 import { lovable } from "@/integrations/lovable/index";
+import { supabase } from "@/integrations/supabase/client";
 import logo from "@/assets/logo.png";
+
+const isCustomDomain = () =>
+  !window.location.hostname.includes("lovable.app") &&
+  !window.location.hostname.includes("lovableproject.com") &&
+  !window.location.hostname.includes("localhost");
+
+const handleSocialLogin = async (provider: "google" | "apple") => {
+  if (isCustomDomain()) {
+    // On custom domain, use Supabase directly with skipBrowserRedirect
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider,
+      options: {
+        redirectTo: window.location.origin,
+        skipBrowserRedirect: true,
+      },
+    });
+    if (error) return { error };
+    if (data?.url) {
+      window.location.href = data.url;
+    }
+    return { error: null };
+  } else {
+    // On Lovable domain, use managed OAuth flow
+    return lovable.auth.signInWithOAuth(provider, {
+      redirect_uri: window.location.origin,
+    });
+  }
+};
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -90,9 +119,7 @@ const Auth = () => {
               size="lg"
               className="w-full rounded-lg flex items-center justify-center gap-3"
               onClick={async () => {
-                const { error } = await lovable.auth.signInWithOAuth("google", {
-                  redirect_uri: "https://paradisia-aqua-escape.lovable.app",
-                });
+                const { error } = await handleSocialLogin("google");
                 if (error) {
                   toast({ title: "Google Sign-In Failed", description: error.message, variant: "destructive" });
                 }
@@ -113,9 +140,7 @@ const Auth = () => {
               size="lg"
               className="w-full rounded-lg flex items-center justify-center gap-3"
               onClick={async () => {
-                const { error } = await lovable.auth.signInWithOAuth("apple", {
-                  redirect_uri: "https://paradisia-aqua-escape.lovable.app",
-                });
+                const { error } = await handleSocialLogin("apple");
                 if (error) {
                   toast({ title: "Apple Sign-In Failed", description: error.message, variant: "destructive" });
                 }
