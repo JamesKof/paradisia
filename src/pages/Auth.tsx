@@ -94,13 +94,13 @@ const Auth = () => {
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-brand-orange/3 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative w-full max-w-md">
+      <div className="relative w-full max-w-md animate-fade-in">
         <a href="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-brand-orange transition-colors mb-8">
-          <ArrowLeft className="w-4 h-4" />
+          <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
           Back to Home
         </a>
 
-        <div className="bg-card rounded-2xl p-8 border border-border shadow-elevation-5">
+        <div className="bg-card rounded-2xl p-8 border border-border shadow-elevation-5 animate-scale-in">
           <div className="flex justify-center mb-6">
             <img src={logo} alt="Paradasia Hideway" className="h-20" />
           </div>
@@ -117,7 +117,7 @@ const Auth = () => {
               type="button"
               variant="outline"
               size="lg"
-              className="w-full rounded-lg flex items-center justify-center gap-3"
+              className="w-full rounded-lg flex items-center justify-center gap-3 hover-scale"
               onClick={async () => {
                 const { error } = await handleSocialLogin("google");
                 if (error) {
