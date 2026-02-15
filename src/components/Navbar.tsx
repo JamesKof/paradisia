@@ -8,12 +8,12 @@ import { useAdmin } from "@/hooks/useAdmin";
 import logo from "@/assets/logo.png";
 
 const navLinks = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Accommodation", href: "#accommodation" },
+  { name: "Home", href: "/#home" },
+  { name: "About", href: "/#about" },
+  { name: "Accommodation", href: "/#accommodation" },
   { name: "Gallery", href: "/gallery", isRoute: true },
-  { name: "Explore", href: "#explore" },
-  { name: "Contact", href: "#contact" },
+  { name: "Explore", href: "/#explore" },
+  { name: "Contact", href: "/#contact" },
 ];
 
 export const Navbar = () => {
@@ -130,7 +130,7 @@ export const Navbar = () => {
                 Login
               </Button>
             )}
-            <a href="#accommodation">
+            <a href="/#accommodation">
               <Button
                 variant="orange"
                 size="default"
@@ -207,7 +207,7 @@ export const Navbar = () => {
                   Login
                 </Button>
               )}
-              <a href="#accommodation" onClick={() => setIsOpen(false)}>
+              <a href="/#accommodation" onClick={() => setIsOpen(false)}>
                 <Button variant="orange" className="w-full rounded-xl">
                   Book Now
                 </Button>
