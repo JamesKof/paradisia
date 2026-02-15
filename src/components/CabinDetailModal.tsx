@@ -62,14 +62,14 @@ export const CabinDetailModal = ({ isOpen, onClose, onBookNow }: CabinDetailModa
             <ChevronRight className="w-5 h-5" />
           </button>
 
-          {/* Dots */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+          {/* Minimal line indicators */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1">
             {cabinImages.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrentSlide(i)}
-                className={`w-2.5 h-2.5 rounded-full transition-all ${
-                  i === currentSlide ? "bg-brand-orange scale-125" : "bg-white/50"
+                className={`h-0.5 rounded-full transition-all duration-500 ${
+                  i === currentSlide ? "w-6 bg-brand-orange" : "w-2 bg-white/30"
                 }`}
               />
             ))}

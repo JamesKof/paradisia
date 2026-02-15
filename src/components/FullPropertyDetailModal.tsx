@@ -3,40 +3,57 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
-import villaLiving from "@/assets/villa-living-room.jpg";
-import villaLounge from "@/assets/villa-lounge.jpg";
-import villaBedroom1 from "@/assets/villa-bedroom-1.jpg";
-import villaBedroom2 from "@/assets/villa-bedroom-2.jpg";
-import villaBedroom3 from "@/assets/villa-bedroom-3.jpg";
-import villaEnsuite from "@/assets/villa-ensuite.jpg";
+// Exterior / property shots
+import aerial1 from "@/assets/paradasia-aerial-1.jpg";
+import aerial2 from "@/assets/paradasia-aerial-2.jpg";
+import aerial3 from "@/assets/paradasia-aerial-3.jpg";
+import property1 from "@/assets/paradasia-property-1.jpg";
+import property2 from "@/assets/paradasia-property-2.jpg";
+import pool from "@/assets/paradasia-pool.jpg";
+import view from "@/assets/paradasia-view.jpg";
 
-const villaImages = [
-  { src: villaLiving, alt: "Elegant living room with African art and plush seating" },
-  { src: villaLounge, alt: "Cosy lounge with flat-screen TV and chevron rug" },
-  { src: villaBedroom1, alt: "Master bedroom with recessed ceiling lighting" },
-  { src: villaBedroom2, alt: "Spacious second bedroom with natural light" },
-  { src: villaBedroom3, alt: "Bedroom with en-suite bathroom access and wardrobe" },
-  { src: villaEnsuite, alt: "En-suite bathroom with artisan mirror and wooden accents" },
+// Interior highlights from cabin & villa
+import cabinBed from "@/assets/cabin-interior-bed.jpg";
+import cabinLiving from "@/assets/cabin-interior-living.jpg";
+import villaLiving from "@/assets/villa-living-room.jpg";
+import villaBedroom1 from "@/assets/villa-bedroom-1.jpg";
+import villaLounge from "@/assets/villa-lounge.jpg";
+import roomBed from "@/assets/paradasia-room-bed.jpg";
+
+const propertyImages = [
+  { src: aerial1, alt: "Aerial view of the full Paradasia property" },
+  { src: property1, alt: "Paradasia property exterior with tropical gardens" },
+  { src: pool, alt: "Resort pool surrounded by lush greenery" },
+  { src: view, alt: "Panoramic views from the property" },
+  { src: aerial2, alt: "Aerial view showing the coastline" },
+  { src: property2, alt: "Property grounds and walkways" },
+  { src: aerial3, alt: "Bird's eye view of the entire island retreat" },
+  { src: villaLiving, alt: "Villa living room — included in full buyout" },
+  { src: villaBedroom1, alt: "Villa master bedroom — included in full buyout" },
+  { src: villaLounge, alt: "Villa lounge area — included in full buyout" },
+  { src: cabinBed, alt: "Cabin bedroom — included in full buyout" },
+  { src: cabinLiving, alt: "Cabin living area — included in full buyout" },
+  { src: roomBed, alt: "Standard room — included in full buyout" },
 ];
 
-interface VillaDetailModalProps {
+interface FullPropertyDetailModalProps {
   isOpen: boolean;
   onClose: () => void;
   onBookNow: () => void;
 }
 
-export const VillaDetailModal = ({ isOpen, onClose, onBookNow }: VillaDetailModalProps) => {
+export const FullPropertyDetailModal = ({ isOpen, onClose, onBookNow }: FullPropertyDetailModalProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const goToPrevious = () => setCurrentSlide((prev) => (prev === 0 ? villaImages.length - 1 : prev - 1));
-  const goToNext = () => setCurrentSlide((prev) => (prev === villaImages.length - 1 ? 0 : prev + 1));
+  const goToPrevious = () => setCurrentSlide((prev) => (prev === 0 ? propertyImages.length - 1 : prev - 1));
+  const goToNext = () => setCurrentSlide((prev) => (prev === propertyImages.length - 1 ? 0 : prev + 1));
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-3xl p-0 overflow-hidden bg-card border-border">
         {/* Image Slider */}
         <div className="relative h-[300px] sm:h-[400px] overflow-hidden">
-          {villaImages.map((img, i) => (
+          {propertyImages.map((img, i) => (
             <img
               key={i}
               src={img.src}
@@ -61,8 +78,9 @@ export const VillaDetailModal = ({ isOpen, onClose, onBookNow }: VillaDetailModa
             <ChevronRight className="w-5 h-5" />
           </button>
 
+          {/* Minimal line indicators instead of dots */}
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1">
-            {villaImages.map((_, i) => (
+            {propertyImages.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrentSlide(i)}
@@ -83,25 +101,23 @@ export const VillaDetailModal = ({ isOpen, onClose, onBookNow }: VillaDetailModa
 
         {/* Content */}
         <div className="p-6 space-y-4">
-          <h2 className="font-display text-2xl text-foreground">Villa – 2 Bedroom</h2>
+          <h2 className="font-display text-2xl text-foreground">Full Property Buyout</h2>
           <p className="text-muted-foreground leading-relaxed">
-            Step into a world of refined island living — the Paradasia 2-Bedroom Villa is a masterfully designed retreat
-            where contemporary luxury meets warm Pan-African artistry. Two generously appointed bedrooms feature king-size
-            beds dressed in premium linens, recessed ambient lighting, built-in wardrobes, and private en-suite bathrooms
-            with artisan-crafted mirrors and stone-finish basins. The heart of the villa is a stunning open-plan living
-            hall adorned with original African artwork, plush velvet seating, a chevron-patterned rug, and a
-            flat-screen entertainment centre — perfect for unwinding after a day of island adventures. Floor-to-ceiling
-            curtains frame tropical garden views, while air conditioning and ceiling fans ensure effortless comfort. Ideal
-            for families, couples travelling together, or small groups seeking space, privacy, and an unforgettable stay.
+            Take over the entire Paradasia Hideway for the ultimate private experience. This exclusive buyout includes 
+            the standalone cabin, the luxurious 2-bedroom villa, and the elegant standard room — a total of three distinct 
+            accommodations sleeping up to 10 guests. Enjoy unrestricted access to the private pool, waterfront lounge, 
+            bonfire pit, and all resort amenities. Perfect for destination weddings, milestone celebrations, corporate 
+            retreats, or simply claiming an entire island paradise as your own. A dedicated team and optional private 
+            chef ensure every detail is flawless.
           </p>
 
           {/* Thumbnail strip */}
           <div className="flex gap-2 overflow-x-auto pb-2">
-            {villaImages.map((img, i) => (
+            {propertyImages.map((img, i) => (
               <button
                 key={i}
                 onClick={() => setCurrentSlide(i)}
-                className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${
+                className={`flex-shrink-0 w-14 h-14 rounded-lg overflow-hidden border-2 transition-all ${
                   i === currentSlide ? "border-brand-orange" : "border-transparent opacity-60 hover:opacity-100"
                 }`}
               >
@@ -111,7 +127,7 @@ export const VillaDetailModal = ({ isOpen, onClose, onBookNow }: VillaDetailModa
           </div>
 
           <Button variant="orange" className="w-full" onClick={onBookNow}>
-            Book This Villa
+            Book Full Property
           </Button>
         </div>
       </DialogContent>

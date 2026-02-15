@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { BookingModal } from "@/components/BookingModal";
 import { CabinDetailModal } from "@/components/CabinDetailModal";
 import { VillaDetailModal } from "@/components/VillaDetailModal";
+import { FullPropertyDetailModal } from "@/components/FullPropertyDetailModal";
 import { ROOM_PRICING } from "@/lib/roomTypes";
 import cabinBed from "@/assets/cabin-interior-bed.jpg";
 import villaLiving from "@/assets/villa-living-room.jpg";
@@ -41,7 +42,7 @@ const rooms = [
     features: ["3 Bedrooms", "Entire Property", "Private Chef Option", "Event Space"],
     guests: "2-10 Guests",
     icon: Castle,
-    hasDetailView: false,
+    hasDetailView: true,
   },
 ] as const;
 
@@ -54,6 +55,7 @@ const commonAmenities = [
 export const AccommodationSection = () => {
   const [cabinDetailOpen, setCabinDetailOpen] = useState(false);
   const [villaDetailOpen, setVillaDetailOpen] = useState(false);
+  const [fullPropertyDetailOpen, setFullPropertyDetailOpen] = useState(false);
   const [bookingModal, setBookingModal] = useState<{
     isOpen: boolean;
     roomType: "cabin" | "villa" | "full_property";
@@ -178,6 +180,7 @@ export const AccommodationSection = () => {
                       onClick={() => {
                         if (room.id === "cabin") setCabinDetailOpen(true);
                         else if (room.id === "villa") setVillaDetailOpen(true);
+                        else if (room.id === "full_property") setFullPropertyDetailOpen(true);
                       }}
                     >
                       <Eye className="w-4 h-4 mr-1.5" />
@@ -211,6 +214,16 @@ export const AccommodationSection = () => {
         onBookNow={() => {
           setVillaDetailOpen(false);
           openBookingModal(rooms[1]);
+        }}
+      />
+
+      {/* Full Property Detail Modal */}
+      <FullPropertyDetailModal
+        isOpen={fullPropertyDetailOpen}
+        onClose={() => setFullPropertyDetailOpen(false)}
+        onBookNow={() => {
+          setFullPropertyDetailOpen(false);
+          openBookingModal(rooms[2]);
         }}
       />
 

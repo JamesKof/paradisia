@@ -112,16 +112,16 @@ export const HeroSection = () => {
         </div>
       </div>
 
-      {/* Slide Indicators */}
-      <div className="absolute bottom-20 sm:bottom-24 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+      {/* Minimal slide indicators */}
+      <div className="absolute bottom-20 sm:bottom-24 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`h-1.5 rounded-full transition-all duration-500 ${
+            className={`rounded-full transition-all duration-500 ${
               current === index
-                ? "w-8 bg-brand-orange"
-                : "w-1.5 bg-white/40 hover:bg-white/60"
+                ? "w-6 h-0.5 bg-brand-orange"
+                : "w-1.5 h-0.5 bg-white/30 hover:bg-white/50"
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />

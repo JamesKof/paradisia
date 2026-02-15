@@ -48,16 +48,16 @@ export const Navbar = () => {
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20 lg:h-22">
           {/* Logo */}
-          <a
-            href="#home"
-            className="flex items-center gap-3 group transition-transform duration-300 hover:scale-105"
+          <span
+            onClick={() => { navigate("/"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+            className="flex items-center gap-3 group transition-transform duration-300 hover:scale-105 cursor-pointer"
           >
             <img
               src={logo}
               alt="Paradasia Hideway"
-              className="h-16 w-auto transition-all duration-300 group-hover:drop-shadow-[0_0_12px_hsl(28_92%_54%/0.4)]"
+              className="h-14 w-auto transition-all duration-300 group-hover:drop-shadow-[0_0_12px_hsl(28_92%_54%/0.4)]"
             />
-          </a>
+          </span>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-0.5 bg-muted/40 backdrop-blur-sm rounded-xl px-1.5 py-1 border border-border/30">
