@@ -82,7 +82,7 @@ const Auth = () => {
             {isLogin ? "Sign in to access your bookings" : "Join us for an unforgettable experience"}
           </p>
 
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-5" autoComplete="on">
             {!isLogin && (
               <div className="grid grid-cols-2 gap-4">
                 <div>
@@ -128,6 +128,33 @@ const Auth = () => {
                 </button>
               </div>
             </div>
+
+            {isLogin && (
+              <div className="text-right">
+                <button
+                  type="button"
+                  onClick={async () => {
+                    if (!email) {
+                      toast({ title: "Enter Your Email", description: "Please enter your email address first, then click Forgot Password.", variant: "destructive" });
+                      return;
+                    }
+                    setIsLoading(true);
+                    const { error } = await (await import("@/integrations/supabase/client")).supabase.auth.resetPasswordForEmail(email, {
+                      redirectTo: `${window.location.origin}/reset-password`,
+                    });
+                    setIsLoading(false);
+                    if (error) {
+                      toast({ title: "Error", description: error.message, variant: "destructive" });
+                    } else {
+                      toast({ title: "Reset Link Sent", description: "Check your email for a password reset link." });
+                    }
+                  }}
+                  className="text-sm text-brand-orange hover:underline"
+                >
+                  Forgot Password?
+                </button>
+              </div>
+            )}
 
             <Button type="submit" variant="orange" size="lg" className="w-full" disabled={isLoading}>
               {isLoading ? "Please wait..." : isLogin ? "Sign In" : "Create Account"}
